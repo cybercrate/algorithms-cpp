@@ -36,5 +36,4 @@
 .vs
 build/
 out/
-
-lib/googletest/
+googletest/
