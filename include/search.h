@@ -1,6 +1,6 @@
-#ifndef WINGALGO_SEARCH_H
-#define WINGALGO_SEARCH_H
+#ifndef WINGMANN_ALGORITHMS_SEARCH_H
+#define WINGMANN_ALGORITHMS_SEARCH_H
 
 #include "search/binary_search.h"
 
-#endif // WINGALGO_SEARCH_H
+#endif // WINGMANN_ALGORITHMS_SEARCH_H

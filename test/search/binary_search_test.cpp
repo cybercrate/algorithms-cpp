@@ -1,6 +1,8 @@
+#include "search.h"
+
 #include "gtest/gtest.h"
 
-#include "search.h"
+namespace search = wingmann::algorithms::search;
 
 TEST(algorithms_search, binary_search_1)
 {
@@ -11,7 +13,7 @@ TEST(algorithms_search, binary_search_1)
     std::sort(data.begin(), data.end());
 
     auto expected{3};
-    auto actual = wing::algo::binary_search(data, 4);
+    auto actual = search::binary_search(data, 4);
 
     // Assert.
     EXPECT_EQ(expected, actual);
@@ -23,7 +25,7 @@ TEST(algorithms_search, binary_search_2)
     std::sort(data.begin(), data.end());
 
     auto expected{8};
-    auto actual = wing::algo::binary_search(data, 31);
+    auto actual = search::binary_search(data, 31);
 
     EXPECT_EQ(expected, actual);
 }
@@ -33,8 +35,8 @@ TEST(algorithms_search, binary_search_3)
     std::vector<int> data{};
     std::sort(data.begin(), data.end());
 
-    auto expected = static_cast<std::size_t>(-1);
-    auto actual = wing::algo::binary_search(data, 1);
+    auto expected = std::numeric_limits<std::size_t>::max();
+    auto actual = search::binary_search(data, 1);
 
     EXPECT_EQ(expected, actual);
 }

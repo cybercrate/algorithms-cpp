@@ -1,5 +1,5 @@
-#ifndef WINGALGO_SEARCH_LINEAR_SEARCH_H
-#define WINGALGO_SEARCH_LINEAR_SEARCH_H
+#ifndef WINGMANN_ALGORITHMS_SEARCH_LINEAR_SEARCH_H
+#define WINGMANN_ALGORITHMS_SEARCH_LINEAR_SEARCH_H
 
 /**
  * @file
@@ -10,7 +10,7 @@
 #include <vector>
 #include <limits>
 
-namespace wing::algo {
+namespace wingmann::algorithms::search {
 
 /**
  * Finds value in vector.
@@ -32,6 +32,6 @@ std::size_t linear_search(const std::vector<T>& data, const T&& value)
     return std::numeric_limits<std::size_t>::max();;
 }
 
-} // namespace wing::algo
+} // namespace wingmann::algorithms::search
 
-#endif // WINGALGO_SEARCH_LINEAR_SEARCH_H
+#endif // WINGMANN_ALGORITHMS_SEARCH_LINEAR_SEARCH_H

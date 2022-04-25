@@ -1,9 +1,9 @@
-#ifndef WINGALGO_DATA_STRUCTURES_LIST_H
-#define WINGALGO_DATA_STRUCTURES_LIST_H
+#ifndef WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
+#define WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
 
 #include <vector>
 
-namespace wing::algo {
+namespace wingmann::algorithms::data_structures {
 
 template<typename T>
 class list {
@@ -17,12 +17,12 @@ public:
     using node_type = node;
 
 private:
-    node* first_;
-    node* last_;
-    size_type size_;
+    node* first_{};
+    node* last_{};
+    size_type size_{};
 
 public:
-    list();
+    list() = default;
     explicit list(node* start);
     ~list();
 
@@ -33,11 +33,11 @@ public:
     void add(node* next);
     void add(T next_data);
 
-    T& get(size_type position);
+    T& get(size_type position) const;
     bool set(size_type position, T new_data);
 
-    size_type size();
-    bool isEmpty();
+    [[nodiscard]] size_type size() const;
+    [[nodiscard]] bool is_empty() const;
 
     T& begin();
     T& end();
@@ -45,13 +45,6 @@ public:
     void sort(bool ascending);
     void swap(node* i, node* j);
 };
-
-template<typename T>
-list<T>::list() {
-    first_ = nullptr;
-    last_ = nullptr;
-    size_ = 0;
-}
 
 template<typename T>
 list<T>::list(node* start)
@@ -111,7 +104,7 @@ bool list<T>::remove(size_type position)
             }
         }
     }
-    return false;
+    return {};
 }
 
 template< typename T >
@@ -120,15 +113,13 @@ void list<T>::add(node* next)
     if (!first_) {
         first_ = next;
         last_ = next;
-        last_->link = nullptr;
-        size_++;
     }
     else {
         last_->link = next;
         last_ = next;
-        last_->link = nullptr;
-        size_++;
     }
+    last_->link = nullptr;
+    size_++;
 }
 
 template<typename T>
@@ -141,19 +132,17 @@ void list<T>::add(T next_data)
     if (!first_) {
         first_ = next;
         last_ = next;
-        last_->link = nullptr;
-        size_++;
     }
     else {
         last_->link = next;
         last_ = next;
-        last_->link = nullptr;
-        size_++;
     }
+    last_->link = nullptr;
+    size_++;
 }
 
 template<typename T>
-T& list<T>::get(size_type position)
+T& list<T>::get(size_type position) const
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
@@ -177,17 +166,17 @@ bool list<T>::set(size_type position, T new_data)
             }
         }
     }
-    return false;
+    return {};
 }
 
 template<typename T>
-typename list<T>::size_type list<T>::size()
+typename list<T>::size_type list<T>::size() const
 {
     return size_;
 }
 
 template<typename T>
-bool list<T>::isEmpty()
+bool list<T>::is_empty() const
 {
     return (first_ == nullptr);
 }
@@ -195,19 +184,19 @@ bool list<T>::isEmpty()
 template<typename T>
 T& list<T>::begin()
 {
-    if (!isEmpty()) return first_->data;
+    if (!is_empty()) return first_->data;
 }
 
 template<typename T>
 T& list<T>::end()
 {
-    if (!isEmpty()) return last_->data;
+    if (!is_empty()) return last_->data;
 }
 
 template<typename T>
 void list<T>::sort(bool ascending)
 {
-    if (isEmpty()) return;
+    if (is_empty()) return;
 
     node* i;
     node* j;
@@ -229,6 +218,6 @@ void list<T>::swap(node* i, node* j)
     j->data = temp_data;
 }
 
-} // namespace wing::algo
+} // namespace wingmann::algorithms::data_structures
 
-#endif // WINGALGO_DATA_STRUCTURES_LIST_H
+#endif // WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
