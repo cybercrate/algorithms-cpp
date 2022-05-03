@@ -52,7 +52,8 @@ namespace wingmann::algorithms::search {
  * @return Index of the value if it is in the vector, otherwise -1.
  */
 template<typename T>
-std::size_t binary_search(const std::vector<T>& data, const T&& value) {
+std::size_t binary_search(const std::vector<T>& data, const T&& value)
+{
     if (data.empty())
         return std::numeric_limits<std::size_t>::max();
 

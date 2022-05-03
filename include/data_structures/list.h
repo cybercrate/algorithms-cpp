@@ -47,7 +47,8 @@ public:
 };
 
 template<typename T>
-list<T>::list(node* start) {
+list<T>::list(node* start)
+{
     if (start->link != nullptr) {
         auto current = first_ = start;
 
@@ -59,7 +60,8 @@ list<T>::list(node* start) {
                 size_ = count;
             }
         }
-    } else {
+    }
+    else {
         first_ = start;
         last_ = start;
         size_ = 1;
@@ -67,12 +69,14 @@ list<T>::list(node* start) {
 }
 
 template<typename T>
-list<T>::~list() {
+list<T>::~list()
+{
     destroy();
 }
 
 template<typename T>
-void list<T>::destroy() {
+void list<T>::destroy()
+{
     node* current;
 
     while (first_ != nullptr) {
@@ -85,7 +89,8 @@ void list<T>::destroy() {
 }
 
 template<typename T>
-bool list<T>::remove(size_type position) {
+bool list<T>::remove(size_type position)
+{
     if (position <= (size_ - 1)) {
         auto current{first_};
 
@@ -103,37 +108,36 @@ bool list<T>::remove(size_type position) {
 }
 
 template< typename T >
-void list<T>::add(node* next) {
-    if (!first_) {
-        first_ = next;
-        last_ = next;
-    } else {
-        last_->link = next;
-        last_ = next;
-    }
+void list<T>::add(node* next)
+{
+    if (!first_)
+        first_ = last_ = next;
+    else
+        last_->link = last_ = next;
+
     last_->link = nullptr;
     size_++;
 }
 
 template<typename T>
-void list<T>::add(T next_data) {
+void list<T>::add(T next_data)
+{
     auto next = new node;
     next->data = next_data;
     next->link = nullptr;
 
-    if (!first_) {
-        first_ = next;
-        last_ = next;
-    } else {
-        last_->link = next;
-        last_ = next;
-    }
+    if (!first_)
+        first_ = last_ = next;
+    else
+        last_->link = last_ = next;
+
     last_->link = nullptr;
     size_++;
 }
 
 template<typename T>
-T& list<T>::get(size_type position) const {
+T& list<T>::get(size_type position) const
+{
     if (position <= (size_ - 1)) {
         auto current{first_};
 
@@ -144,7 +148,8 @@ T& list<T>::get(size_type position) const {
 }
 
 template<typename T>
-bool list<T>::set(size_type position, T new_data) {
+bool list<T>::set(size_type position, T new_data)
+{
     if (position <= (size_ - 1)) {
         auto current{first_};
 
@@ -159,27 +164,32 @@ bool list<T>::set(size_type position, T new_data) {
 }
 
 template<typename T>
-typename list<T>::size_type list<T>::size() const {
+typename list<T>::size_type list<T>::size() const
+{
     return size_;
 }
 
 template<typename T>
-bool list<T>::is_empty() const {
+bool list<T>::is_empty() const
+{
     return (first_ == nullptr);
 }
 
 template<typename T>
-T& list<T>::begin() {
+T& list<T>::begin()
+{
     if (!is_empty()) return first_->data;
 }
 
 template<typename T>
-T& list<T>::end() {
+T& list<T>::end()
+{
     if (!is_empty()) return last_->data;
 }
 
 template<typename T>
-void list<T>::sort(bool ascending) {
+void list<T>::sort(bool ascending)
+{
     if (is_empty()) return;
 
     node* i;
@@ -195,7 +205,8 @@ void list<T>::sort(bool ascending) {
 }
 
 template<typename T>
-void list<T>::swap(node* i, node* j) {
+void list<T>::swap(node* i, node* j)
+{
     T temp_data = i->data;
     i->data = j->data;
     j->data = temp_data;
