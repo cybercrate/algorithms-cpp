@@ -8,14 +8,14 @@ set(INCLUDE_DIR ../include)
 
 set(PROJECT_INCLUDE_DIR
     ${INCLUDE_DIR}
-    ${INCLUDE_DIR}/data_structures
+    ${INCLUDE_DIR}/containers
     ${INCLUDE_DIR}/search)
 
 include_directories(${PROJECT_INCLUDE_DIR})
 
 file(GLOB PROJECT_SOURCES
     search/*.cpp
-    data_structures/*.cpp)
+    containers/*.cpp)
 
 add_executable(${TARGET} ${PROJECT_SOURCES})
 

@@ -8,7 +8,7 @@ using List = wingmann::algorithms::containers::List<T>;
 template<typename T>
 using ListNode = typename wingmann::algorithms::containers::List<T>::ListNode;
 
-TEST(list, empty)
+TEST(containers, list_empty)
 {
     auto list = new List<int>{};
 
@@ -16,7 +16,7 @@ TEST(list, empty)
     EXPECT_EQ(0, list->size());
 }
 
-TEST(list, from_node)
+TEST(containers, list_from_node)
 {
     auto node = ListNode<int>{7};
     node.link = new ListNode<int>{9};
@@ -27,7 +27,7 @@ TEST(list, from_node)
     EXPECT_EQ(2, list->size());
 }
 
-TEST(list, add_element)
+TEST(containers, list_add_element)
 {
     auto list = new List<int>{};
 
@@ -37,7 +37,7 @@ TEST(list, add_element)
     EXPECT_EQ(2, list->size());
 }
 
-TEST(list, add_node)
+TEST(containers, list_add_node)
 {
     auto list = new List<int>{};
 
@@ -51,7 +51,7 @@ TEST(list, add_node)
     EXPECT_EQ(3, list->size());
 }
 
-TEST(list, remove_element)
+TEST(containers, list_remove_element)
 {
     auto list = new List<int>{};
     list->add(8);
@@ -67,7 +67,7 @@ TEST(list, remove_element)
     EXPECT_EQ(2, list->size());
 }
 
-TEST(list, get_element)
+TEST(containers, list_get_element)
 {
     auto list = new List<int>{};
     list->add(7);
@@ -85,7 +85,7 @@ TEST(list, get_element)
     EXPECT_EQ(6, list->get(3));
 }
 
-TEST(list, set_element)
+TEST(containers, list_set_element)
 {
     auto list = new List<int>{};
     list->add(1);
@@ -107,7 +107,7 @@ TEST(list, set_element)
     EXPECT_EQ(11, list->get(5));
 }
 
-TEST(list, get_begin)
+TEST(containers, list_get_begin)
 {
     auto list = new List<int>{};
     list->add(1);
@@ -117,7 +117,7 @@ TEST(list, get_begin)
     EXPECT_EQ(1, list->begin());
 }
 
-TEST(list, get_end)
+TEST(containers, list_get_end)
 {
     auto list = new List<int>{};
     list->add(1);
@@ -127,7 +127,7 @@ TEST(list, get_end)
     EXPECT_EQ(9, list->end());
 }
 
-TEST(list, destroy)
+TEST(containers, list_destroy)
 {
     auto list = new List<int>{};
     list->add(4);
