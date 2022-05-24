@@ -4,7 +4,7 @@
 
 namespace search = wingmann::algorithms::search;
 
-TEST(algorithms_search, linear_search_1)
+TEST(search, linear_search_1)
 {
     std::vector data{1, 3, 5, 7, 9, 8, 6, 4, 2};
     std::sort(data.begin(), data.end());
@@ -14,7 +14,7 @@ TEST(algorithms_search, linear_search_1)
     EXPECT_EQ(3, actual);
 }
 
-TEST(algorithms_search, linear_search_2)
+TEST(search, linear_search_2)
 {
     std::vector<int> data{};
     std::sort(data.begin(), data.end());

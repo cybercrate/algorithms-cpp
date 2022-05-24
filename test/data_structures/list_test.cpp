@@ -1,31 +1,35 @@
-#include "data_structures.h"
+#include "containers.h"
 
 #include "gtest/gtest.h"
 
-namespace ds = wingmann::algorithms::data_structures;
+template<typename T>
+using List = wingmann::algorithms::containers::List<T>;
 
-TEST(data_structures_list, empty)
+template<typename T>
+using ListNode = typename wingmann::algorithms::containers::List<T>::ListNode;
+
+TEST(list, empty)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
 
     EXPECT_TRUE(list->is_empty());
     EXPECT_EQ(0, list->size());
 }
 
-TEST(data_structures_list, from_node)
+TEST(list, from_node)
 {
-    auto node = ds::list<int>::node_type{7};
-    node.link = new ds::list<int>::node_type{9};
+    auto node = ListNode<int>{7};
+    node.link = new ListNode<int>{9};
 
-    auto list = new ds::list<int>{&node};
+    auto list = new List<int>{&node};
 
     EXPECT_FALSE(list->is_empty());
     EXPECT_EQ(2, list->size());
 }
 
-TEST(data_structures_list, add_element)
+TEST(list, add_element)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
 
     list->add(7);
     list->add(5);
@@ -33,23 +37,23 @@ TEST(data_structures_list, add_element)
     EXPECT_EQ(2, list->size());
 }
 
-TEST(data_structures_list, add_node)
+TEST(list, add_node)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
 
     list->add(7);
     list->add(5);
 
-    auto node = ds::list<int>::node_type{1, nullptr};
+    auto node = ListNode<int>{1, nullptr};
 
     list->add(&node);
 
     EXPECT_EQ(3, list->size());
 }
 
-TEST(data_structures_list, remove_element)
+TEST(list, remove_element)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(8);
     list->add(2);
     list->add(1);
@@ -63,9 +67,9 @@ TEST(data_structures_list, remove_element)
     EXPECT_EQ(2, list->size());
 }
 
-TEST(data_structures_list, get_element)
+TEST(list, get_element)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(7);
     list->add(5);
     list->add(1);
@@ -81,9 +85,9 @@ TEST(data_structures_list, get_element)
     EXPECT_EQ(6, list->get(3));
 }
 
-TEST(data_structures_list, set_element)
+TEST(list, set_element)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(1);
     list->add(4);
     list->add(1);
@@ -103,9 +107,9 @@ TEST(data_structures_list, set_element)
     EXPECT_EQ(11, list->get(5));
 }
 
-TEST(data_structures_list, get_begin)
+TEST(list, get_begin)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(1);
     list->add(2);
     list->add(9);
@@ -113,9 +117,9 @@ TEST(data_structures_list, get_begin)
     EXPECT_EQ(1, list->begin());
 }
 
-TEST(data_structures_list, get_end)
+TEST(list, get_end)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(1);
     list->add(2);
     list->add(9);
@@ -123,9 +127,9 @@ TEST(data_structures_list, get_end)
     EXPECT_EQ(9, list->end());
 }
 
-TEST(data_structures_list, destroy)
+TEST(list, destroy)
 {
-    auto list = new ds::list<int>{};
+    auto list = new List<int>{};
     list->add(4);
     list->add(8);
     list->add(1);

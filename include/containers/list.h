@@ -1,58 +1,58 @@
-#ifndef WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
-#define WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
+#ifndef WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
+#define WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 
 #include <vector>
 
-namespace wingmann::algorithms::data_structures {
+namespace wingmann::algorithms::containers {
 
 template<typename T>
-class list {
-    struct node {
+class List {
+    struct Node {
         T data;
-        node* link;
+        Node* link;
     };
 
 public:
-    using size_type = std::size_t;
-    using node_type = node;
+    using Size = std::size_t;
+    using ListNode = Node;
 
 private:
-    node* first_{};
-    node* last_{};
-    size_type size_{};
+    Node* first_{};
+    Node* last_{};
+    Size size_{};
 
 public:
-    list() = default;
-    explicit list(node* start);
-    ~list();
+    List() = default;
+    explicit List(Node* start);
+    ~List();
 
 public:
     void destroy();
-    bool remove(size_type position);
+    bool remove(Size position);
 
-    void add(node* next);
+    void add(Node* next);
     void add(T next_data);
 
-    T& get(size_type position) const;
-    bool set(size_type position, T new_data);
+    T& get(Size position) const;
+    bool set(Size position, T new_data);
 
-    [[nodiscard]] size_type size() const;
+    [[nodiscard]] Size size() const;
     [[nodiscard]] bool is_empty() const;
 
     T& begin();
     T& end();
 
     void sort(bool ascending);
-    void swap(node* i, node* j);
+    void swap(Node* i, Node* j);
 };
 
 template<typename T>
-list<T>::list(node* start)
+List<T>::List(Node* start)
 {
     if (start->link != nullptr) {
         auto current = first_ = start;
 
-        for (size_type count = 0; current != nullptr; current = current->link) {
+        for (Size count = 0; current != nullptr; current = current->link) {
             count++;
 
             if (current->link == nullptr) {
@@ -69,15 +69,15 @@ list<T>::list(node* start)
 }
 
 template<typename T>
-list<T>::~list()
+List<T>::~List()
 {
     destroy();
 }
 
 template<typename T>
-void list<T>::destroy()
+void List<T>::destroy()
 {
-    node* current;
+    Node* current;
 
     while (first_ != nullptr) {
         current = first_;
@@ -89,12 +89,12 @@ void list<T>::destroy()
 }
 
 template<typename T>
-bool list<T>::remove(size_type position)
+bool List<T>::remove(Size position)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (size_type i = 0; current != nullptr; current = current->link, i++) {
+        for (Size i = 0; current != nullptr; current = current->link, i++) {
             if (i == (position - 1)) {
                 auto temp = current->link;
                 current->link = current->link->link;
@@ -108,52 +108,62 @@ bool list<T>::remove(size_type position)
 }
 
 template< typename T >
-void list<T>::add(node* next)
+void List<T>::add(Node* next)
 {
-    if (!first_)
-        first_ = last_ = next;
-    else
-        last_->link = last_ = next;
-
-    last_->link = nullptr;
-    size_++;
+    if (!first_) {
+        first_ = next;
+        last_ = next;
+        last_->link = nullptr;
+        size_++;
+    }
+    else {
+        last_->link = next;
+        last_ = next;
+        last_->link = nullptr;
+        size_++;
+    }
 }
 
 template<typename T>
-void list<T>::add(T next_data)
+void List<T>::add(T next_data)
 {
-    auto next = new node;
+    auto next = new Node;
     next->data = next_data;
     next->link = nullptr;
 
-    if (!first_)
-        first_ = last_ = next;
-    else
-        last_->link = last_ = next;
-
-    last_->link = nullptr;
-    size_++;
+    if (!first_) {
+        first_ = next;
+        last_ = next;
+        last_->link = nullptr;
+        size_++;
+    }
+    else {
+        last_->link = next;
+        last_ = next;
+        last_->link = nullptr;
+        size_++;
+    }
 }
 
 template<typename T>
-T& list<T>::get(size_type position) const
+T& List<T>::get(Size position) const
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (size_type i = 0; current; current = current->link, i++)
+        for (Size i = 0; current; current = current->link, i++)
             if (i == position)
                 return current->data;
     }
 }
 
 template<typename T>
-bool list<T>::set(size_type position, T new_data)
+bool List<T>::set(Size position, T new_data)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (size_type i = 0; current != nullptr; current = current->link, i++) {
+        for (Size i = 0; current != nullptr; current = current->link, i++) {
             if (i == position) {
                 current->data = new_data;
                 return true;
@@ -164,36 +174,36 @@ bool list<T>::set(size_type position, T new_data)
 }
 
 template<typename T>
-typename list<T>::size_type list<T>::size() const
+typename List<T>::Size List<T>::size() const
 {
     return size_;
 }
 
 template<typename T>
-bool list<T>::is_empty() const
+bool List<T>::is_empty() const
 {
     return (first_ == nullptr);
 }
 
 template<typename T>
-T& list<T>::begin()
+T& List<T>::begin()
 {
     if (!is_empty()) return first_->data;
 }
 
 template<typename T>
-T& list<T>::end()
+T& List<T>::end()
 {
     if (!is_empty()) return last_->data;
 }
 
 template<typename T>
-void list<T>::sort(bool ascending)
+void List<T>::sort(bool ascending)
 {
     if (is_empty()) return;
 
-    node* i;
-    node* j;
+    Node* i;
+    Node* j;
 
     auto sorter = (ascending)
         ? [this](auto a, auto b) { if (b->data < a->data) swap(a, b); }
@@ -205,13 +215,13 @@ void list<T>::sort(bool ascending)
 }
 
 template<typename T>
-void list<T>::swap(node* i, node* j)
+void List<T>::swap(Node* i, Node* j)
 {
     T temp_data = i->data;
     i->data = j->data;
     j->data = temp_data;
 }
 
-} // namespace wingmann::algorithms::data_structures
+} // namespace wingmann::algorithms::containers
 
-#endif // WINGMANN_ALGORITHMS_DATA_STRUCTURES_LIST_H
+#endif // WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
