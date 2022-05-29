@@ -13,13 +13,12 @@ class List {
     };
 
 public:
-    using Size = std::size_t;
     using ListNode = Node;
 
 private:
     Node* first_{};
     Node* last_{};
-    Size size_{};
+    std::size_t size_{};
 
 public:
     List() = default;
@@ -28,15 +27,15 @@ public:
 
 public:
     void destroy();
-    bool remove(Size position);
+    bool remove(std::size_t position);
 
     void add(Node* next);
     void add(T next_data);
 
-    T& get(Size position) const;
-    bool set(Size position, T new_data);
+    T& get(std::size_t position) const;
+    bool set(std::size_t position, T new_data);
 
-    [[nodiscard]] Size size() const;
+    [[nodiscard]] std::size_t size() const;
     [[nodiscard]] bool is_empty() const;
 
     T& begin();
@@ -52,7 +51,7 @@ List<T>::List(Node* start)
     if (start->link != nullptr) {
         auto current = first_ = start;
 
-        for (Size count = 0; current != nullptr; current = current->link) {
+        for (std::size_t count = 0; current != nullptr; current = current->link) {
             count++;
 
             if (current->link == nullptr) {
@@ -89,12 +88,12 @@ void List<T>::destroy()
 }
 
 template<typename T>
-bool List<T>::remove(Size position)
+bool List<T>::remove(std::size_t position)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (Size i = 0; current != nullptr; current = current->link, i++) {
+        for (std::size_t i = 0; current != nullptr; current = current->link, i++) {
             if (i == (position - 1)) {
                 auto temp = current->link;
                 current->link = current->link->link;
@@ -146,24 +145,24 @@ void List<T>::add(T next_data)
 }
 
 template<typename T>
-T& List<T>::get(Size position) const
+T& List<T>::get(std::size_t position) const
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (Size i = 0; current; current = current->link, i++)
+        for (std::size_t i = 0; current; current = current->link, i++)
             if (i == position)
                 return current->data;
     }
 }
 
 template<typename T>
-bool List<T>::set(Size position, T new_data)
+bool List<T>::set(std::size_t position, T new_data)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
 
-        for (Size i = 0; current != nullptr; current = current->link, i++) {
+        for (std::size_t i = 0; current != nullptr; current = current->link, i++) {
             if (i == position) {
                 current->data = new_data;
                 return true;
@@ -174,7 +173,7 @@ bool List<T>::set(Size position, T new_data)
 }
 
 template<typename T>
-typename List<T>::Size List<T>::size() const
+std::size_t List<T>::size() const
 {
     return size_;
 }

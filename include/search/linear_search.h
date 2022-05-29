@@ -15,10 +15,6 @@
  * @see https://en.wikipedia.org/wiki/Linear_search
  */
 
-#include "errors/search_error_kind.h"
-
-#include <err_fusion.h>
-
 #include <cstddef>
 #include <vector>
 #include <limits>
@@ -37,14 +33,13 @@ namespace wingmann::algorithms::search {
 template<typename T>
 auto linear_search(const std::vector<T>& data, const T&& value)
 {
-    if (data.empty())
-        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
+    if (data.empty()) return static_cast<std::size_t>(-1);
 
     for (std::size_t i = 0; i < data.size(); ++i)
         if (data[i] == value)
-            return ef::ok<std::size_t, error::SearchError>(i);
+            return i;
 
-    return ef::err<std::size_t, error::SearchError>(error::SearchError::NotFound);
+    return static_cast<std::size_t>(-1);
 }
 
 } // namespace wingmann::algorithms::search

@@ -3,7 +3,6 @@
 #include "search.h"
 
 namespace search = wingmann::algorithms::search;
-namespace error = wingmann::algorithms::error;
 
 TEST(search, linear_search_correct)
 {
@@ -13,7 +12,7 @@ TEST(search, linear_search_correct)
     auto expected{8};
     auto actual = search::linear_search(data, 31);
 
-    EXPECT_EQ(expected, actual.get());
+    EXPECT_EQ(expected, actual);
 }
 
 TEST(search, linear_search_correct_not_found)
@@ -24,7 +23,7 @@ TEST(search, linear_search_correct_not_found)
     auto expected{8};
     auto actual = search::linear_search(data, 4);
 
-    EXPECT_EQ(error::SearchError::NotFound, actual.get_error());
+    EXPECT_EQ(static_cast<std::size_t>(-1), actual);
 }
 
 TEST(search, linear_search_empty)
@@ -34,5 +33,5 @@ TEST(search, linear_search_empty)
 
     auto actual = search::linear_search(data, 1);
 
-    EXPECT_EQ(error::SearchError::Empty, actual.get_error());
+    EXPECT_EQ(static_cast<std::size_t>(-1), actual);
 }

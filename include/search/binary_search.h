@@ -18,10 +18,6 @@
  * @see https://en.wikipedia.org/wiki/Binary_search_algorithm
  */
 
-#include "errors/search_error_kind.h"
-
-#include <err_fusion.h>
-
 #include <cstddef>
 #include <vector>
 #include <limits>
@@ -40,8 +36,7 @@ namespace wingmann::algorithms::search {
 template<typename T>
 auto binary_search(const std::vector<T>& data, const T&& value)
 {
-    if (data.empty())
-        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
+    if (data.empty()) return static_cast<std::size_t>(-1);
 
     // Set lowest point of the vector.
     std::size_t low{};
@@ -59,14 +54,14 @@ auto binary_search(const std::vector<T>& data, const T&& value)
         // If pivot point is the value, return it, else check if val is greater or smaller than
         // pivot value and set the next pivot point accordingly.
         if (value == current)
-            return ef::ok<std::size_t, error::SearchError>(index);
+            return index;
         else if (value < current)
             high = index - 1;
         else
             low = index + 1;
     }
     // If vector does not contain a value, return -1.
-    return ef::err<std::size_t, error::SearchError>(error::SearchError::NotFound);
+    return static_cast<std::size_t>(-1);
 }
 
 } // namespace wingmann::algorithms::search

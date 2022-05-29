@@ -36,10 +36,6 @@
  * to search for the maximum or minimum of a uni-modal function in an interval.
  */
 
-#include "errors/search_error_kind.h"
-
-#include <err_fusion.h>
-
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
@@ -59,8 +55,7 @@ namespace wingmann::algorithms::search {
 template<typename T>
 auto fibonacci_search(const std::vector<T>& data, const T& target)
 {
-    if (data.empty())
-        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
+    if (data.empty()) return static_cast<std::size_t>(-1);
 
     std::size_t last{};
     std::size_t current{1};
@@ -91,13 +86,12 @@ auto fibonacci_search(const std::vector<T>& data, const T& target)
             last = next - current;
         }
         else {
-            return ef::ok<std::size_t, error::SearchError>(index);
+            return index;
         }
     }
-
-    return ef::err<std::size_t, error::SearchError>((current && data[offset + 1] == target)
+    return (current && data[offset + 1] == target)
         ? offset + 1
-        : error::SearchError::NotFound);
+        : static_cast<std::size_t>(-1);
 }
 
 
