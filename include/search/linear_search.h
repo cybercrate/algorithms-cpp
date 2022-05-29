@@ -15,6 +15,10 @@
  * @see https://en.wikipedia.org/wiki/Linear_search
  */
 
+#include "errors/search_error_kind.h"
+
+#include <err_fusion.h>
+
 #include <cstddef>
 #include <vector>
 #include <limits>
@@ -26,19 +30,21 @@ namespace wingmann::algorithms::search {
  * @tparam T Generic type of vector.
  * @param data Vector to be searched in.
  * @param value Value to be searched.
- * @return Index of the value if it is in the vector, otherwise -1.
+ * @return
+ * Index of the found item or Empty if the container item is empty or
+ * NotFound if the item is not found.
  */
 template<typename T>
-std::size_t linear_search(const std::vector<T>& data, const T&& value)
+auto linear_search(const std::vector<T>& data, const T&& value)
 {
     if (data.empty())
-        return std::numeric_limits<std::size_t>::max();
+        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
 
-    for (auto i = 0; i < data.size(); ++i)
+    for (std::size_t i = 0; i < data.size(); ++i)
         if (data[i] == value)
-            return i;
+            return ef::ok<std::size_t, error::SearchError>(i);
 
-    return std::numeric_limits<std::size_t>::max();
+    return ef::err<std::size_t, error::SearchError>(error::SearchError::NotFound);
 }
 
 } // namespace wingmann::algorithms::search

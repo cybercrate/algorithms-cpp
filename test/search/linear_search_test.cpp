@@ -3,24 +3,36 @@
 #include "search.h"
 
 namespace search = wingmann::algorithms::search;
+namespace error = wingmann::algorithms::error;
 
-TEST(search, linear_search_1)
+TEST(search, linear_search_correct)
 {
-    std::vector data{1, 3, 5, 7, 9, 8, 6, 4, 2};
+    std::vector data{1, 31, 231, 12, 2, 5, 51, 21, 23, 12, 3};
     std::sort(data.begin(), data.end());
 
-    auto actual = search::binary_search(data, 4);
+    auto expected{8};
+    auto actual = search::linear_search(data, 31);
 
-    EXPECT_EQ(3, actual);
+    EXPECT_EQ(expected, actual.get());
 }
 
-TEST(search, linear_search_2)
+TEST(search, linear_search_correct_not_found)
+{
+    std::vector data{1, 31, 231, 12, 2, 5, 51, 21, 23, 12, 3};
+    std::sort(data.begin(), data.end());
+
+    auto expected{8};
+    auto actual = search::linear_search(data, 4);
+
+    EXPECT_EQ(error::SearchError::NotFound, actual.get_error());
+}
+
+TEST(search, linear_search_empty)
 {
     std::vector<int> data{};
     std::sort(data.begin(), data.end());
 
-    auto expected = std::numeric_limits<std::size_t>::max();
-    auto actual = search::binary_search(data, 1);
+    auto actual = search::linear_search(data, 1);
 
-    EXPECT_EQ(expected, actual);
+    EXPECT_EQ(error::SearchError::Empty, actual.get_error());
 }

@@ -18,6 +18,10 @@
  * @see https://en.wikipedia.org/wiki/Binary_search_algorithm
  */
 
+#include "errors/search_error_kind.h"
+
+#include <err_fusion.h>
+
 #include <cstddef>
 #include <vector>
 #include <limits>
@@ -29,13 +33,15 @@ namespace wingmann::algorithms::search {
  * @tparam T Generic type of vector.
  * @param data Vector to be searched in.
  * @param value Value to be searched.
- * @return Index of the value if it is in the vector, otherwise -1.
+ * @return
+ * Index of the found item or Empty if the container item is empty or
+ * NotFound if the item is not found.
  */
 template<typename T>
-std::size_t binary_search(const std::vector<T>& data, const T&& value)
+auto binary_search(const std::vector<T>& data, const T&& value)
 {
     if (data.empty())
-        return std::numeric_limits<std::size_t>::max();
+        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
 
     // Set lowest point of the vector.
     std::size_t low{};
@@ -53,14 +59,14 @@ std::size_t binary_search(const std::vector<T>& data, const T&& value)
         // If pivot point is the value, return it, else check if val is greater or smaller than
         // pivot value and set the next pivot point accordingly.
         if (value == current)
-            return index;
+            return ef::ok<std::size_t, error::SearchError>(index);
         else if (value < current)
             high = index - 1;
         else
             low = index + 1;
     }
     // If vector does not contain a value, return -1.
-    return std::numeric_limits<std::size_t>::max();
+    return ef::err<std::size_t, error::SearchError>(error::SearchError::NotFound);
 }
 
 } // namespace wingmann::algorithms::search

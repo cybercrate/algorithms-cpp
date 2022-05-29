@@ -36,6 +36,10 @@
  * to search for the maximum or minimum of a uni-modal function in an interval.
  */
 
+#include "errors/search_error_kind.h"
+
+#include <err_fusion.h>
+
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
@@ -48,12 +52,15 @@ namespace wingmann::algorithms::search {
  * @tparam T Generic type of collection elements.
  * @param data Array to search in.
  * @param target Search item.
- * @return Index of the found element or -1 if the element is not found.
+ * @return
+ * Index of the found item or Empty if the container item is empty or
+ * NotFound if the item is not found.
  */
 template<typename T>
-std::size_t fibonacci_search(const std::vector<T>& data, const T& target)
+auto fibonacci_search(const std::vector<T>& data, const T& target)
 {
-    if (data.empty()) return static_cast<std::size_t>(-1);
+    if (data.empty())
+        return ef::err<std::size_t, error::SearchError>(error::SearchError::Empty);
 
     std::size_t last{};
     std::size_t current{1};
@@ -66,7 +73,6 @@ std::size_t fibonacci_search(const std::vector<T>& data, const T& target)
         current = next;
         next = last + current;
     }
-
     int offset = -1;
     std::size_t index;
 
@@ -77,7 +83,7 @@ std::size_t fibonacci_search(const std::vector<T>& data, const T& target)
             next = current;
             current = last;
             last = next - current;
-            offset = index;
+            offset = static_cast<int>(index);
         }
         else if (data[index] > target) {
             next = last;
@@ -85,13 +91,13 @@ std::size_t fibonacci_search(const std::vector<T>& data, const T& target)
             last = next - current;
         }
         else {
-            return index;
+            return ef::ok<std::size_t, error::SearchError>(index);
         }
     }
 
-    return (current && data[offset + 1] == target)
+    return ef::err<std::size_t, error::SearchError>((current && data[offset + 1] == target)
         ? offset + 1
-        : static_cast<std::size_t>(-1);
+        : error::SearchError::NotFound);
 }
 
 
