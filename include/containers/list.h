@@ -6,30 +6,30 @@
 namespace wingmann::algorithms::containers {
 
 template<typename T>
-class List {
-    struct Node {
+class list {
+    struct node {
         T data;
-        Node* link;
+        node* link;
     };
 
 public:
-    using ListNode = Node;
+    using list_node = node;
 
 private:
-    Node* first_{};
-    Node* last_{};
+    node* first_{};
+    node* last_{};
     std::size_t size_{};
 
 public:
-    List() = default;
-    explicit List(Node* start);
-    ~List();
+    list() = default;
+    explicit list(node* start);
+    ~list();
 
 public:
     void destroy();
     bool remove(std::size_t position);
 
-    void add(Node* next);
+    void add(node* next);
     void add(T next_data);
 
     T& get(std::size_t position) const;
@@ -42,11 +42,11 @@ public:
     T& end();
 
     void sort(bool ascending);
-    void swap(Node* i, Node* j);
+    void swap(node* i, node* j);
 };
 
 template<typename T>
-List<T>::List(Node* start)
+list<T>::list(node* start)
 {
     if (start->link != nullptr) {
         auto current = first_ = start;
@@ -68,15 +68,15 @@ List<T>::List(Node* start)
 }
 
 template<typename T>
-List<T>::~List()
+list<T>::~list()
 {
     destroy();
 }
 
 template<typename T>
-void List<T>::destroy()
+void list<T>::destroy()
 {
-    Node* current;
+    node* current;
 
     while (first_ != nullptr) {
         current = first_;
@@ -88,7 +88,7 @@ void List<T>::destroy()
 }
 
 template<typename T>
-bool List<T>::remove(std::size_t position)
+bool list<T>::remove(std::size_t position)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
@@ -107,7 +107,7 @@ bool List<T>::remove(std::size_t position)
 }
 
 template< typename T >
-void List<T>::add(Node* next)
+void list<T>::add(node* next)
 {
     if (!first_) {
         first_ = next;
@@ -124,9 +124,9 @@ void List<T>::add(Node* next)
 }
 
 template<typename T>
-void List<T>::add(T next_data)
+void list<T>::add(T next_data)
 {
-    auto next = new Node;
+    auto next = new node;
     next->data = next_data;
     next->link = nullptr;
 
@@ -145,7 +145,7 @@ void List<T>::add(T next_data)
 }
 
 template<typename T>
-T& List<T>::get(std::size_t position) const
+T& list<T>::get(std::size_t position) const
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
@@ -157,7 +157,7 @@ T& List<T>::get(std::size_t position) const
 }
 
 template<typename T>
-bool List<T>::set(std::size_t position, T new_data)
+bool list<T>::set(std::size_t position, T new_data)
 {
     if (position <= (size_ - 1)) {
         auto current{first_};
@@ -173,36 +173,36 @@ bool List<T>::set(std::size_t position, T new_data)
 }
 
 template<typename T>
-std::size_t List<T>::size() const
+std::size_t list<T>::size() const
 {
     return size_;
 }
 
 template<typename T>
-bool List<T>::is_empty() const
+bool list<T>::is_empty() const
 {
     return (first_ == nullptr);
 }
 
 template<typename T>
-T& List<T>::begin()
+T& list<T>::begin()
 {
     if (!is_empty()) return first_->data;
 }
 
 template<typename T>
-T& List<T>::end()
+T& list<T>::end()
 {
     if (!is_empty()) return last_->data;
 }
 
 template<typename T>
-void List<T>::sort(bool ascending)
+void list<T>::sort(bool ascending)
 {
     if (is_empty()) return;
 
-    Node* i;
-    Node* j;
+    node* i;
+    node* j;
 
     auto sorter = (ascending)
         ? [this](auto a, auto b) { if (b->data < a->data) swap(a, b); }
@@ -214,7 +214,7 @@ void List<T>::sort(bool ascending)
 }
 
 template<typename T>
-void List<T>::swap(Node* i, Node* j)
+void list<T>::swap(node* i, node* j)
 {
     T temp_data = i->data;
     i->data = j->data;

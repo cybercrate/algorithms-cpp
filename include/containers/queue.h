@@ -7,20 +7,20 @@
 namespace wingmann::algorithms::containers {
 
 template<typename T>
-class Queue {
+class queue {
     template<typename U>
-    struct Node {
+    struct node {
         U data;
-        Node<U>* next;
+        node<U>* next;
     };
 
-    Node<int>* front_;
-    Node<T>* rear_;
+    node<int>* front_;
+    node<T>* rear_;
     std::size_t size_;
 
 public:
-    Queue();
-    virtual ~Queue() = default;
+    queue();
+    virtual ~queue() = default;
 
 public:
     void enqueue(T item);
@@ -32,7 +32,7 @@ public:
 };
 
 template<typename T>
-Queue<T>::Queue()
+queue<T>::queue()
 {
     front_ = nullptr;
     rear_ = nullptr;
@@ -40,9 +40,9 @@ Queue<T>::Queue()
 }
 
 template<typename T>
-void Queue<T>::enqueue(T item)
+void queue<T>::enqueue(T item)
 {
-    auto new_node = new Node<T>;
+    auto new_node = new node<T>;
     new_node->data = item;
     new_node->next = nullptr;
 
@@ -58,7 +58,7 @@ void Queue<T>::enqueue(T item)
 }
 
 template<typename T>
-T Queue<T>::dequeue()
+T queue<T>::dequeue()
 {
     if (is_empty()) return {};
 
@@ -71,25 +71,25 @@ T Queue<T>::dequeue()
 }
 
 template<typename T>
-T Queue<T>::front()
+T queue<T>::front()
 {
     return is_empty() ? T{} : front_->data;
 }
 
 template<typename T>
-bool Queue<T>::is_empty()
+bool queue<T>::is_empty()
 {
     return front_ == nullptr;
 }
 
 template<typename T>
-std::size_t Queue<T>::size()
+std::size_t queue<T>::size()
 {
     return size_;
 }
 
 template<typename T>
-void Queue<T>::clear()
+void queue<T>::clear()
 {
     front_ = nullptr;
 }

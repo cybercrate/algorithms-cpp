@@ -11,7 +11,7 @@ file(GLOB PROJECT_SOURCES
 
 add_executable(${TARGET} ${PROJECT_SOURCES})
 
-target_link_libraries(${TARGET} PUBLIC gtest_main)
+target_link_libraries(${TARGET} PUBLIC gtest_main algorithms)
 target_include_directories(${TARGET} PUBLIC ../include)
 
 enable_testing()
