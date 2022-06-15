@@ -2,16 +2,7 @@
 #define WINGMANN_ALGORITHMS_SEARCH_LINEAR_SEARCH_H
 
 /**
- * @brief Linear search algorithm
- * @details
- * A linear search runs in at worst linear time and makes at most n comparisons,
- * where n is the length of the list.@n
- * If each element is equally likely to be searched,
- * then linear search has an average case of (n+1)/2 comparisons,
- * but the average case can be affected if the search probabilities for each element vary.@n
- * Linear search is rarely practical because other search algorithms and schemes,
- * such as the binary search algorithm and hash tables,
- * allow significantly faster searching for all but short lists.
+ * @brief Linear search algorithm implementation.
  * @see https://en.wikipedia.org/wiki/Linear_search
  */
 

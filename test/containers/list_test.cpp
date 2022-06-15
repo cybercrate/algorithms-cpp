@@ -3,14 +3,14 @@
 #include "gtest/gtest.h"
 
 template<typename T>
-using List = wingmann::algorithms::containers::List<T>;
+using list_type = wingmann::algorithms::containers::list<T>;
 
 template<typename T>
-using ListNode = typename wingmann::algorithms::containers::List<T>::ListNode;
+using list_node_type = typename wingmann::algorithms::containers::list<T>::list_node;
 
 TEST(containers, list_empty)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
 
     EXPECT_TRUE(list->is_empty());
     EXPECT_EQ(0, list->size());
@@ -18,10 +18,10 @@ TEST(containers, list_empty)
 
 TEST(containers, list_from_node)
 {
-    auto node = ListNode<int>{7};
-    node.link = new ListNode<int>{9};
+    auto node = list_node_type<int>{ 7};
+    node.link = new list_node_type<int>{ 9};
 
-    auto list = new List<int>{&node};
+    auto list = new list_type<int>{ &node};
 
     EXPECT_FALSE(list->is_empty());
     EXPECT_EQ(2, list->size());
@@ -29,7 +29,7 @@ TEST(containers, list_from_node)
 
 TEST(containers, list_add_element)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
 
     list->add(7);
     list->add(5);
@@ -39,12 +39,12 @@ TEST(containers, list_add_element)
 
 TEST(containers, list_add_node)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
 
     list->add(7);
     list->add(5);
 
-    auto node = ListNode<int>{1, nullptr};
+    auto node = list_node_type<int>{ 1, nullptr};
 
     list->add(&node);
 
@@ -53,7 +53,7 @@ TEST(containers, list_add_node)
 
 TEST(containers, list_remove_element)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(8);
     list->add(2);
     list->add(1);
@@ -69,7 +69,7 @@ TEST(containers, list_remove_element)
 
 TEST(containers, list_get_element)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(7);
     list->add(5);
     list->add(1);
@@ -87,7 +87,7 @@ TEST(containers, list_get_element)
 
 TEST(containers, list_set_element)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(1);
     list->add(4);
     list->add(1);
@@ -109,7 +109,7 @@ TEST(containers, list_set_element)
 
 TEST(containers, list_get_begin)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(1);
     list->add(2);
     list->add(9);
@@ -119,7 +119,7 @@ TEST(containers, list_get_begin)
 
 TEST(containers, list_get_end)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(1);
     list->add(2);
     list->add(9);
@@ -129,7 +129,7 @@ TEST(containers, list_get_end)
 
 TEST(containers, list_destroy)
 {
-    auto list = new List<int>{};
+    auto list = new list_type<int>{};
     list->add(4);
     list->add(8);
     list->add(1);

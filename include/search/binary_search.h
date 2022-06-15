@@ -2,19 +2,7 @@
 #define WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_H
 
 /**
- * @brief Binary search algorithm
- * @details
- * Binary search compares the target value to the middle element of the array.@n
- * If they are not equal, the half in which the target cannot lie is eliminated and the search
- * continues on the remaining half, again taking the middle element to compare to the target value,
- * and repeating this until the target value is found.@n
- * If the search ends with the remaining half being empty, the target is not in the array.@n
- * @complexities
- * Worst-case time complexity  O(log n)@n
- * Best-case time complexity   O(1)@n
- * Average time complexity	   O(log n)@n
- * Worst-case space complexity 0(1)@n
- * Where n is the number of element in the array.
+ * @brief Binary search algorithm implementation.
  * @see https://en.wikipedia.org/wiki/Binary_search_algorithm
  */
 

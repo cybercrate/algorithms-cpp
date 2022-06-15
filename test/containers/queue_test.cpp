@@ -3,17 +3,17 @@
 #include "gtest/gtest.h"
 
 template<typename T>
-using Queue = wingmann::algorithms::containers::Queue<T>;
+using queue_type = wingmann::algorithms::containers::queue<T>;
 
 TEST(containers, queue_empty)
 {
-    Queue<int> queue;
+    queue_type<int> queue;
     EXPECT_TRUE(queue.is_empty());
 }
 
 TEST(containers, queue_enqueue)
 {
-    Queue<int> queue;
+    queue_type<int> queue;
     queue.enqueue(5);
     queue.enqueue(174);
     queue.enqueue(69);
@@ -27,7 +27,7 @@ TEST(containers, queue_enqueue)
 
 TEST(containers, queue_dequeue)
 {
-    Queue<int> queue;
+    queue_type<int> queue;
     queue.enqueue(5);
     queue.enqueue(174);
     queue.enqueue(69);
@@ -46,7 +46,7 @@ TEST(containers, queue_dequeue)
 
 TEST(containers, queue_front)
 {
-    Queue<int> queue;
+    queue_type<int> queue;
     queue.enqueue(5);
     queue.enqueue(174);
     queue.enqueue(69);
