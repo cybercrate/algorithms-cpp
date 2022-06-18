@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <memory>
+#include <optional>
 
 namespace wingmann::algorithms::containers {
 
@@ -24,24 +25,22 @@ public:
 
 public:
     void enqueue(T item);
-    T dequeue();
-    T front();
+    std::optional<T> dequeue();
+    std::optional<T> front();
     bool is_empty();
     std::size_t size();
     void clear();
 };
 
 template<typename T>
-queue<T>::queue()
-{
+queue<T>::queue() {
     front_ = nullptr;
     rear_ = nullptr;
     size_ = 0;
 }
 
 template<typename T>
-void queue<T>::enqueue(T item)
-{
+void queue<T>::enqueue(T item) {
     auto new_node = new node<T>;
     new_node->data = item;
     new_node->next = nullptr;
@@ -49,8 +48,7 @@ void queue<T>::enqueue(T item)
     if (is_empty()) {
         front_ = new_node;
         rear_ = new_node;
-    }
-    else {
+    } else {
         rear_->next = new_node;
         rear_ = rear_->next;
     }
@@ -58,9 +56,8 @@ void queue<T>::enqueue(T item)
 }
 
 template<typename T>
-T queue<T>::dequeue()
-{
-    if (is_empty()) return {};
+std::optional<T> queue<T>::dequeue() {
+    if (is_empty()) return std::nullopt;
 
     T result = front_->data;
     auto temp = front_;
@@ -71,26 +68,25 @@ T queue<T>::dequeue()
 }
 
 template<typename T>
-T queue<T>::front()
-{
-    return is_empty() ? T{} : front_->data;
+std::optional<T> queue<T>::front() {
+    if (!is_empty())
+        return front_->data;
+    else
+        return std::nullopt;
 }
 
 template<typename T>
-bool queue<T>::is_empty()
-{
+bool queue<T>::is_empty() {
     return front_ == nullptr;
 }
 
 template<typename T>
-std::size_t queue<T>::size()
-{
+std::size_t queue<T>::size() {
     return size_;
 }
 
 template<typename T>
-void queue<T>::clear()
-{
+void queue<T>::clear() {
     front_ = nullptr;
 }
 

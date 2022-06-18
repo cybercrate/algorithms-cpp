@@ -18,25 +18,26 @@ namespace wingmann::algorithms::sorting {
  * @param data Vector to sort.
  */
 template<typename T>
-void bubble_sort(std::vector<T>& data)
-{
-    if (data.empty()) return;
+bool bubble_sort(std::vector<T>& data) {
+    if (data.size() > 1) {
+        bool swapped;
+        auto size = data.size();
 
-    bool swapped;
-    auto size = data.size();
+        for (std::size_t i = 0; i < size - 1; i++) {
+            swapped = false;
 
-    for (std::size_t i = 0; i < size - 1; i++) {
-        swapped = false;
-
-        for (std::size_t j = 0; j < size - i - 1; j++) {
-            if (data[j] > data[j + 1]) {
-                std::swap(data[j], data[j + 1]);
-                swapped = true;
+            for (std::size_t j = 0; j < size - i - 1; j++) {
+                if (data[j] > data[j + 1]) {
+                    std::swap(data[j], data[j + 1]);
+                    swapped = true;
+                }
             }
-        }
 
-        if (!swapped) break;
+            if (!swapped) break;
+        }
+        return true;
     }
+    return {};
 }
 
 } // namespace wingmann::algorithms::sorting
