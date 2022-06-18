@@ -18,7 +18,8 @@ namespace wingmann::algorithms::sorting {
  * @param data Vector to sort.
  */
 template<typename T>
-bool bubble_sort(std::vector<T>& data) {
+bool bubble_sort(std::vector<T>& data)
+{
     if (data.size() > 1) {
         bool swapped;
         auto size = data.size();
