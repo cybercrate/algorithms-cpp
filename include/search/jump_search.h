@@ -26,13 +26,14 @@ std::optional<std::size_t> jump_search(const std::vector<T>& data, const T& targ
         std::size_t jump_step = std::floor(std::sqrt(data.size()));
         std::size_t current_index{};
         std::size_t next_index = jump_step;
+        std::size_t size = data.size();
 
-        while (data[next_index-1] < target) {
+        while (data[next_index - 1] < target) {
             current_index = next_index;
             next_index += jump_step;
 
-            if (next_index >= data.size()) {
-                next_index = data.size()-1;
+            if (next_index >= size) {
+                next_index = size - 1;
                 break;
             }
         }

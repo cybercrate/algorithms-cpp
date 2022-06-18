@@ -1,72 +1,62 @@
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 
-#include <vector>
-#include <optional>
+#include <cstddef>
 
 namespace wingmann::algorithms::containers {
 
 template<typename T>
 class list {
     struct node {
-        T data;
-        node* link;
+        T info;
+        node* next;
+        node* back;
     };
 
 public:
-    using list_node = node;
+    using node_type = node;    
 
-private:
-    node* first_{};
-    node* last_{};
-    std::size_t size_{};
+protected:
+    std::size_t count{};
+    node* first{};
+    node* last{};
 
 public:
     list() = default;
-    explicit list(node* start);
-    ~list();
+    list(const list<T>& other);
+    virtual ~list();
 
 public:
-    void destroy();
-    bool remove(std::size_t position);
+    list<T>& operator=(const list<T>&);
 
-    void add(node* next);
-    void add(T next_data);
-
-    T& get(std::size_t position) const;
-    bool set(std::size_t position, T new_data);
-
-    [[nodiscard]]
-    std::size_t size() const;
+public:
+    void reset();
 
     [[nodiscard]]
     bool is_empty() const;
 
-    T& begin();
-    T& end();
+    void destroy();
 
-    void sort(bool ascending);
-    void swap(node* i, node* j);
+    [[nodiscard]]
+    std::size_t size() const;
+
+    T front() const;
+    T back() const;
+
+    bool search(const T& search_item) const;
+
+    void insert(const T& insert_item);
+
+    void delete_node(const T& delete_item);
+
+private:
+    void copy(const list<T>& other);
 };
 
 template<typename T>
-list<T>::list(node* start) {
-    if (start->link != nullptr) {
-        auto current = first_ = start;
-
-        for (std::size_t count = 0; current != nullptr; current = current->link) {
-            count++;
-
-            if (current->link == nullptr) {
-                last_ = current;
-                size_ = count;
-            }
-        }
-    } else {
-        first_ = start;
-        last_ = start;
-        size_ = 1;
-    }
+list<T>::list(const list<T>& other) {
+    first = nullptr;
+    copy(other);
 }
 
 template<typename T>
@@ -75,137 +65,203 @@ list<T>::~list() {
 }
 
 template<typename T>
-void list<T>::destroy() {
-    node* current;
+list<T>& list<T>::operator=(const list<T>& other) {
+    if (this != &other)
+        copy(other);
 
-    while (first_ != nullptr) {
-        current = first_;
-        first_ = first_->link;
-        delete current;
-    }
-    last_ = nullptr;
-    size_ = 0;
+    return *this;
 }
 
 template<typename T>
-bool list<T>::remove(std::size_t position) {
-    if (position <= (size_ - 1)) {
-        auto current{first_};
-
-        for (std::size_t i = 0; current != nullptr; current = current->link, i++) {
-            if (i == (position - 1)) {
-                auto temp = current->link;
-                current->link = current->link->link;
-                delete temp;
-                size_--;
-                return true;
-            }
-        }
-    }
-    return {};
-}
-
-template< typename T >
-void list<T>::add(node* next) {
-    if (!first_) {
-        first_ = next;
-        last_ = next;
-        last_->link = nullptr;
-        size_++;
-    } else {
-        last_->link = next;
-        last_ = next;
-        last_->link = nullptr;
-        size_++;
-    }
-}
-
-template<typename T>
-void list<T>::add(T next_data) {
-    auto next = new node;
-    next->data = next_data;
-    next->link = nullptr;
-
-    if (!first_) {
-        first_ = next;
-        last_ = next;
-        last_->link = nullptr;
-        size_++;
-    } else {
-        last_->link = next;
-        last_ = next;
-        last_->link = nullptr;
-        size_++;
-    }
-}
-
-template<typename T>
-T& list<T>::get(std::size_t position) const {
-    if (position <= (size_ - 1)) {
-        auto current{first_};
-
-        for (std::size_t i = 0; current; current = current->link, i++)
-            if (i == position)
-                return current->data;
-    }
-}
-
-template<typename T>
-bool list<T>::set(std::size_t position, T new_data) {
-    if (position <= (size_ - 1)) {
-        auto current{first_};
-
-        for (std::size_t i = 0; current != nullptr; current = current->link, i++) {
-            if (i == position) {
-                current->data = new_data;
-                return true;
-            }
-        }
-    }
-    return {};
-}
-
-template<typename T>
-std::size_t list<T>::size() const {
-    return size_;
+void list<T>::reset() {
+    destroy();
 }
 
 template<typename T>
 bool list<T>::is_empty() const {
-    return (first_ == nullptr);
+    return first == nullptr;
 }
 
 template<typename T>
-T& list<T>::begin() {
-    if (!is_empty()) return first_->data;
+void list<T>::destroy() {
+    node* temp;
+
+    while (first != nullptr) {
+        temp = first;
+        first = first->next;
+        delete temp;
+    }
+    last = nullptr;
+    count = 0;
 }
 
 template<typename T>
-T& list<T>::end() {
-    if (!is_empty()) return last_->data;
+std::size_t list<T>::size() const {
+    return count;
 }
 
 template<typename T>
-void list<T>::sort(bool ascending) {
-    if (is_empty()) return;
+bool list<T>::search(const T& search_item) const {
+    bool found = false;
+    node* current;
 
-    node* i;
-    node* j;
+    current = first;
 
-    auto sorter = (ascending)
-        ? [this](auto a, auto b) { if (b->data < a->data) swap(a, b); }
-        : [this](auto a, auto b) { if (b->data > a->data) swap(a, b); };
+    while ((current != nullptr) && !found) {
+        if (current->info >= search_item)
+            found = true;
+        else
+            current = current->next;
+    }
 
-    for (i = first_; i != nullptr; i = i->link)
-        for (j = i->link;j != nullptr; j = j->link)
-            sorter(i, j);
+    if (found)
+        found = (current->info == search_item);
+
+    return found;
 }
 
 template<typename T>
-void list<T>::swap(node* i, node* j) {
-    T temp_data = i->data;
-    i->data = j->data;
-    j->data = temp_data;
+T list<T>::front() const {
+    return first->info;
+}
+
+template<typename T>
+T list<T>::back() const {
+    return last->info;
+}
+
+template<typename T>
+void list<T>::insert(const T& insert_item) {
+    node* current;
+    node* trail_current = nullptr;
+    node* new_node;
+    bool found;
+
+    new_node = new node{};
+    new_node->info = insert_item;
+    new_node->next = nullptr;
+    new_node->back = nullptr;
+
+    if (first == nullptr) {
+        first = new_node;
+        last = new_node;
+        count++;
+    } else {
+        found = false;
+        current = first;
+
+        while ((current != nullptr) && !found) {
+            if (current->info >= insert_item) {
+                found = true;
+            }
+            else {
+                trail_current = current;
+                current = current->next;
+            }
+        }
+
+        if (current == first) {
+            first->back = new_node;
+            new_node->next = first;
+            first = new_node;
+            count++;
+        } else {
+            if (current != nullptr) {
+                trail_current->next = new_node;
+                new_node->back = trail_current;
+                new_node->next = current;
+                current->back = new_node;
+            } else {
+                trail_current->next = new_node;
+                new_node->back = trail_current;
+                last = new_node;
+            }
+            count++;
+        }
+    }
+}
+
+template<typename T>
+void list<T>::delete_node(const T& delete_item) {
+    node* current;
+    node* trail_current;
+
+    bool found;
+
+    if (first->info == delete_item) {
+        current = first;
+        first = first->next;
+
+        if (first != nullptr)
+            first->back = nullptr;
+        else
+            last = nullptr;
+
+        count--;
+
+        delete current;
+    } else {
+        found = false;
+        current = first;
+
+        while ((current != nullptr) && !found) {
+            if (current->info >= delete_item)
+                found = true;
+            else
+                current = current->next;
+        }
+
+        if (current->info == delete_item) {
+            trail_current = current->back;
+            trail_current->next = current->next;
+
+            if (current->next != nullptr)
+                current->next->back = trail_current;
+
+            if (current == last)
+                last = trail_current;
+
+            count--;
+            delete current;
+        }
+    }
+}
+
+template<typename T>
+void list<T>::copy(const list<T>& other) {
+    node* new_node;
+    node* current;
+
+    if (first != nullptr)
+        destroy();
+
+    if (other.first == nullptr) {
+        first = nullptr;
+        last = nullptr;
+        count = 0;
+    } else {
+        current = other.first;
+        count = other.count;
+
+        first = new node{};
+        first->info = current->info;
+        first->next = nullptr;
+        first->back = nullptr;
+        last = first;
+
+        current = current->next;
+
+        while (current != nullptr) {
+            new_node = new node{};
+            new_node->info = current->info;
+            new_node->next = nullptr;
+            new_node->back = last;
+
+            last->next = new_node;
+            last = new_node;
+            current = current->next;
+        }
+    }
 }
 
 } // namespace wingmann::algorithms::containers
