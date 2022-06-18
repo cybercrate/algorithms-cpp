@@ -1,26 +1,27 @@
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 
-#include <cstddef>
-#include <memory>
 #include <optional>
 
 namespace wingmann::algorithms::containers {
 
 template<typename T>
 class queue {
-    template<typename U>
     struct node {
-        U data;
-        node<U>* next;
+        T data;
+        node* next;
     };
 
-    node<int>* front_;
-    node<T>* rear_;
-    std::size_t size_;
+public:
+    using node_type = node;
+
+protected:
+    std::size_t size_{};
+    node* front_{};
+    node* rear_{};
 
 public:
-    queue();
+    queue() = default;
     virtual ~queue() = default;
 
 public:
@@ -33,15 +34,8 @@ public:
 };
 
 template<typename T>
-queue<T>::queue() {
-    front_ = nullptr;
-    rear_ = nullptr;
-    size_ = 0;
-}
-
-template<typename T>
 void queue<T>::enqueue(T item) {
-    auto new_node = new node<T>;
+    auto new_node = new node{};
     new_node->data = item;
     new_node->next = nullptr;
 

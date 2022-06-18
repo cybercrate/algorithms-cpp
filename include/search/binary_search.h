@@ -36,7 +36,7 @@ std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& ta
             if (target < current_position)
                 right_index = middle_index;
             else if (target > current_position)
-                left_index = middle_index+1;
+                left_index = middle_index + 1;
             else if (target == current_position)
                 return middle_index;
         }
