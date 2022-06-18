@@ -6,6 +6,7 @@
  * @see https://en.wikipedia.org/wiki/Binary_search_algorithm
  */
 
+#include <optional>
 #include <cstddef>
 #include <vector>
 #include <limits>
@@ -17,39 +18,30 @@ namespace wingmann::algorithms::search {
  * @tparam T Generic type of vector.
  * @param data Vector to be searched in.
  * @param value Value to be searched.
- * @return
- * Index of the found item or Empty if the container item is empty or
- * NotFound if the item is not found.
+ * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
-auto binary_search(const std::vector<T>& data, const T&& value)
+std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
 {
-    if (data.empty()) return static_cast<std::size_t>(-1);
+    if (!data.empty()) {
+        std::size_t left_index = 0;
+        std::size_t right_index = data.size();
+        std::size_t middle_index;
+        std::size_t current_position;
 
-    // Set lowest point of the vector.
-    std::size_t low{};
-    // Set the highest point of the vector.
-    std::size_t high{data.size() - 1};
+        while (left_index < right_index) {
+            middle_index = left_index + (right_index - left_index) / 2;
+            current_position = data[middle_index];
 
-    std::size_t current;
-    std::size_t index;
-
-    while (low <= high) {
-        // Set the pivot point.
-        index = low + (high - low) / 2;
-        current = data.at(index);
-
-        // If pivot point is the value, return it, else check if val is greater or smaller than
-        // pivot value and set the next pivot point accordingly.
-        if (value == current)
-            return index;
-        else if (value < current)
-            high = index - 1;
-        else
-            low = index + 1;
+            if (target < current_position)
+                right_index = middle_index;
+            else if (target > current_position)
+                left_index = middle_index+1;
+            else if (target == current_position)
+                return middle_index;
+        }
     }
-    // If vector does not contain a value, return -1.
-    return static_cast<std::size_t>(-1);
+    return std::nullopt;
 }
 
 } // namespace wingmann::algorithms::search

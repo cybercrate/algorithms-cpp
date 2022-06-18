@@ -6,6 +6,7 @@
  * @see https://en.wikipedia.org/wiki/Fibonacci_search_technique
  */
 
+#include <optional>
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
@@ -14,18 +15,15 @@
 namespace wingmann::algorithms::search {
 
 /**
- * @brief Using fibonacci search algorithm finds an index of a given element in a sorted collection.
- * @tparam T Generic type of collection elements.
- * @param data Array to search in.
- * @param target Search item.
- * @return
- * Index of the found item or Empty if the container item is empty or
- * NotFound if the item is not found.
+ * @brief Finds value in vector.
+ * @tparam T Generic type of vector.
+ * @param data Vector to be searched in.
+ * @param value Value to be searched.
+ * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
-auto fibonacci_search(const std::vector<T>& data, const T& target)
-{
-    if (data.empty()) return static_cast<std::size_t>(-1);
+std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target) {
+    if (data.empty()) return std::nullopt;
 
     std::size_t last{};
     std::size_t current{1};
@@ -59,9 +57,11 @@ auto fibonacci_search(const std::vector<T>& data, const T& target)
             return index;
         }
     }
-    return (current && data[offset + 1] == target)
-        ? offset + 1
-        : static_cast<std::size_t>(-1);
+
+    if (current && (data[offset + 1] == target))
+        return offset + 1;
+    else
+        return std::nullopt;
 }
 
 } // namespace wingmann::algorithms::search

@@ -1,37 +1,27 @@
-#include "gtest/gtest.h"
-
 #include "search.h"
 
-namespace search = wingmann::algorithms::search;
+#include "gtest/gtest.h"
 
-TEST(search, linear_search_correct)
-{
-    std::vector data{1, 31, 231, 12, 2, 5, 51, 21, 23, 12, 3};
-    std::sort(data.begin(), data.end());
+using namespace wingmann::algorithms::search;
 
-    auto expected{8};
-    auto actual = search::linear_search(data, 31);
-
-    EXPECT_EQ(expected, actual);
+TEST(linear_search, empty) {
+    EXPECT_EQ(std::nullopt, linear_search(std::vector<int>{}, 1));
 }
 
-TEST(search, linear_search_correct_not_found)
-{
-    std::vector data{1, 31, 231, 12, 2, 5, 51, 21, 23, 12, 3};
-    std::sort(data.begin(), data.end());
-
-    auto expected{8};
-    auto actual = search::linear_search(data, 4);
-
-    EXPECT_EQ(static_cast<std::size_t>(-1), actual);
+TEST(linear_search, one_value) {
+    EXPECT_EQ(0, linear_search(std::vector<int>{64}, 64).value());
 }
 
-TEST(search, linear_search_empty)
-{
-    std::vector<int> data{};
-    std::sort(data.begin(), data.end());
+TEST(linear_search, several_values) {
+    auto data = std::vector{1, 1, 3, 7, 9, 11, 12, 14, 21, 34, 35, 64, 87, 91, 128, 199, 201};
+    auto target{34};
 
-    auto actual = search::linear_search(data, 1);
+    EXPECT_EQ(9, linear_search(data, target));
+}
 
-    EXPECT_EQ(static_cast<std::size_t>(-1), actual);
+TEST(linear_search, not_found) {
+    auto data = std::vector{1, 1, 3, 7, 9, 11, 12, 14, 21, 34, 35, 64, 87, 91, 128, 199, 201};
+    auto target{2};
+
+    EXPECT_EQ(std::nullopt, linear_search(data, target));
 }
