@@ -6,11 +6,9 @@
  * @see https://en.wikipedia.org/wiki/Fibonacci_search_technique
  */
 
+#include <cmath>
 #include <optional>
 #include <vector>
-#include <cstdlib>
-#include <algorithm>
-#include <cstddef>
 
 namespace wingmann::algorithms::search {
 
@@ -22,8 +20,7 @@ namespace wingmann::algorithms::search {
  * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
-std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target)
-{
+std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target) {
     if (data.empty()) return std::nullopt;
 
     std::size_t last{};
@@ -32,7 +29,7 @@ std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T&
     auto next{last + current};
     auto size = data.size();
 
-    while(next < size) {
+    while (next < size) {
         last = current;
         current = next;
         next = last + current;
@@ -40,7 +37,7 @@ std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T&
     int offset = -1;
     std::size_t index;
 
-    while(next > 1) {
+    while (next > 1) {
         index = std::min(offset + last, size - 1);
 
         if (data[index] < target) {
@@ -48,13 +45,11 @@ std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T&
             current = last;
             last = next - current;
             offset = static_cast<int>(index);
-        }
-        else if (data[index] > target) {
+        } else if (data[index] > target) {
             next = last;
             current = current - last;
             last = next - current;
-        }
-        else {
+        } else {
             return index;
         }
     }

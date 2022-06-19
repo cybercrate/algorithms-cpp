@@ -1,9 +1,8 @@
 #ifndef WINGMANN_ALGORITHMS_SORTING_BUBBLE_SORT_H
 #define WINGMANN_ALGORITHMS_SORTING_BUBBLE_SORT_H
 
-#include <vector>
-#include <cstddef>
 #include <utility>
+#include <vector>
 
 /**
  * @brief Bubble sort algorithm implementation.
@@ -18,8 +17,7 @@ namespace wingmann::algorithms::sorting {
  * @param data Vector to sort.
  */
 template<typename T>
-bool bubble_sort(std::vector<T>& data)
-{
+bool bubble_sort(std::vector<T>& data) {
     if (data.size() > 1) {
         bool swapped;
         auto size = data.size();

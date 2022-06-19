@@ -7,9 +7,7 @@
  */
 
 #include <optional>
-#include <cstddef>
 #include <vector>
-#include <limits>
 
 namespace wingmann::algorithms::search {
 
@@ -21,8 +19,7 @@ namespace wingmann::algorithms::search {
  * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
-std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
-{
+std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
     if (!data.empty()) {
         std::size_t left_index = 0;
         std::size_t right_index = data.size();
