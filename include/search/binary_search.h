@@ -19,24 +19,25 @@ namespace wingmann::algorithms::search {
  * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
-std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
-    if (!data.empty()) {
-        std::size_t left_index = 0;
-        std::size_t right_index = data.size();
-        std::size_t middle_index;
-        std::size_t current_position;
+std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
+{
+    if (data.empty()) return std::nullopt;
 
-        while (left_index < right_index) {
-            middle_index = left_index + (right_index - left_index) / 2;
-            current_position = data[middle_index];
+    std::size_t left_index = 0;
+    std::size_t right_index = data.size();
+    std::size_t middle_index;
+    std::size_t current_position;
 
-            if (target < current_position)
-                right_index = middle_index;
-            else if (target > current_position)
-                left_index = middle_index + 1;
-            else if (target == current_position)
-                return middle_index;
-        }
+    while (left_index < right_index) {
+        middle_index = left_index + (right_index - left_index) / 2;
+        current_position = data[middle_index];
+
+        if (target < current_position)
+            right_index = middle_index;
+        else if (target > current_position)
+            left_index = middle_index + 1;
+        else if (target == current_position)
+            return middle_index;
     }
     return std::nullopt;
 }

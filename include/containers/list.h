@@ -52,34 +52,40 @@ private:
 };
 
 template<typename T>
-list<T>::list(const list<T>& other) {
+list<T>::list(const list<T>& other)
+{
     first_ = nullptr;
     copy(other);
 }
 
 template<typename T>
-list<T>::~list() {
+list<T>::~list()
+{
     destroy();
 }
 
 template<typename T>
-list<T>& list<T>::operator=(const list<T>& other) {
+list<T>& list<T>::operator=(const list<T>& other)
+{
     if (this != &other) copy(other);
     return *this;
 }
 
 template<typename T>
-void list<T>::reset() {
+void list<T>::reset()
+{
     destroy();
 }
 
 template<typename T>
-bool list<T>::is_empty() const {
+bool list<T>::is_empty() const
+{
     return first_ == nullptr;
 }
 
 template<typename T>
-void list<T>::destroy() {
+void list<T>::destroy()
+{
     node* temp;
 
     while (first_ != nullptr) {
@@ -92,12 +98,14 @@ void list<T>::destroy() {
 }
 
 template<typename T>
-std::size_t list<T>::size() const {
+std::size_t list<T>::size() const
+{
     return size_;
 }
 
 template<typename T>
-bool list<T>::search(const T& search_item) const {
+bool list<T>::search(const T& search_item) const
+{
     bool found = false;
     node* current;
 
@@ -110,23 +118,27 @@ bool list<T>::search(const T& search_item) const {
             current = current->next;
     }
 
-    if (found) found = (current->info == search_item);
+    if (found)
+        found = (current->info == search_item);
 
     return found;
 }
 
 template<typename T>
-T list<T>::front() const {
+T list<T>::front() const
+{
     return first_->info;
 }
 
 template<typename T>
-T list<T>::back() const {
+T list<T>::back() const
+{
     return last_->info;
 }
 
 template<typename T>
-void list<T>::insert(const T& insert_item) {
+void list<T>::insert(const T& insert_item)
+{
     node* current;
     node* trail_current = nullptr;
     node* new_node;
@@ -141,14 +153,16 @@ void list<T>::insert(const T& insert_item) {
         first_ = new_node;
         last_ = new_node;
         size_++;
-    } else {
+    }
+    else {
         found = false;
         current = first_;
 
         while ((current != nullptr) && !found) {
             if (current->info >= insert_item) {
                 found = true;
-            } else {
+            }
+            else {
                 trail_current = current;
                 current = current->next;
             }
@@ -159,13 +173,15 @@ void list<T>::insert(const T& insert_item) {
             new_node->next = first_;
             first_ = new_node;
             size_++;
-        } else {
+        }
+        else {
             if (current != nullptr) {
                 trail_current->next = new_node;
                 new_node->back = trail_current;
                 new_node->next = current;
                 current->back = new_node;
-            } else {
+            }
+            else {
                 trail_current->next = new_node;
                 new_node->back = trail_current;
                 last_ = new_node;
@@ -176,7 +192,8 @@ void list<T>::insert(const T& insert_item) {
 }
 
 template<typename T>
-void list<T>::delete_node(const T& delete_item) {
+void list<T>::delete_node(const T& delete_item)
+{
     node* current;
     node* trail_current;
 
@@ -194,7 +211,8 @@ void list<T>::delete_node(const T& delete_item) {
         size_--;
 
         delete current;
-    } else {
+    }
+    else {
         found = false;
         current = first_;
 
@@ -209,9 +227,11 @@ void list<T>::delete_node(const T& delete_item) {
             trail_current = current->back;
             trail_current->next = current->next;
 
-            if (current->next != nullptr) current->next->back = trail_current;
+            if (current->next != nullptr)
+                current->next->back = trail_current;
 
-            if (current == last_) last_ = trail_current;
+            if (current == last_)
+                last_ = trail_current;
 
             size_--;
             delete current;
@@ -220,17 +240,20 @@ void list<T>::delete_node(const T& delete_item) {
 }
 
 template<typename T>
-void list<T>::copy(const list<T>& other) {
+void list<T>::copy(const list<T>& other)
+{
     node* new_node;
     node* current;
 
-    if (first_ != nullptr) destroy();
+    if (first_ != nullptr)
+        destroy();
 
     if (other.first_ == nullptr) {
         first_ = nullptr;
         last_ = nullptr;
         size_ = 0;
-    } else {
+    }
+    else {
         current = other.first_;
         size_ = other.count;
 

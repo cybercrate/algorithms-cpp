@@ -34,7 +34,8 @@ public:
 };
 
 template<typename T>
-void queue<T>::enqueue(T item) {
+void queue<T>::enqueue(T item)
+{
     auto new_node = new node{};
     new_node->data = item;
     new_node->next = nullptr;
@@ -42,7 +43,8 @@ void queue<T>::enqueue(T item) {
     if (is_empty()) {
         front_ = new_node;
         rear_ = new_node;
-    } else {
+    }
+    else {
         rear_->next = new_node;
         rear_ = rear_->next;
     }
@@ -50,37 +52,43 @@ void queue<T>::enqueue(T item) {
 }
 
 template<typename T>
-std::optional<T> queue<T>::dequeue() {
-    if (is_empty()) return std::nullopt;
-
-    T result = front_->data;
-    auto temp = front_;
-    front_ = front_->next;
-    delete temp;
-    size_--;
-    return result;
+std::optional<T> queue<T>::dequeue()
+{
+    if (!is_empty()) {
+        T result = front_->data;
+        auto temp = front_;
+        front_ = front_->next;
+        delete temp;
+        size_--;
+        return result;
+    }
+    return std::nullopt;
 }
 
 template<typename T>
-std::optional<T> queue<T>::front() {
+std::optional<T> queue<T>::front()
+{
     if (!is_empty())
         return front_->data;
-    else
-        return std::nullopt;
+
+    return std::nullopt;
 }
 
 template<typename T>
-bool queue<T>::is_empty() {
+bool queue<T>::is_empty()
+{
     return front_ == nullptr;
 }
 
 template<typename T>
-std::size_t queue<T>::size() {
+std::size_t queue<T>::size()
+{
     return size_;
 }
 
 template<typename T>
-void queue<T>::clear() {
+void queue<T>::clear()
+{
     front_ = nullptr;
 }
 
