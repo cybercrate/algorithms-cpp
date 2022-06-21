@@ -7,7 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 file(GLOB PROJECT_SOURCES
     containers/*.cpp
     search/*.cpp
-    sorting/*.cpp)
+    sorting/*.cpp
+    strings/*.cpp)
 
 add_executable(${TARGET} ${PROJECT_SOURCES})
 
