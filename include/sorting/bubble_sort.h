@@ -34,7 +34,7 @@ bool bubble_sort(std::vector<T>& data)
             }
         }
 
-        if (!swapped) return false;
+        if (!swapped) break;
     }
     return true;
 }
