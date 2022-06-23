@@ -8,6 +8,7 @@
 
 #include <optional>
 #include <vector>
+#include <concepts>
 
 namespace wingmann::algorithms::search {
 
@@ -19,6 +20,7 @@ namespace wingmann::algorithms::search {
  * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
+requires std::totally_ordered<T>
 std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
 {
     if (data.empty()) return std::nullopt;
@@ -32,12 +34,12 @@ std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& ta
         middle_index = left_index + (right_index - left_index) / 2;
         current_position = data[middle_index];
 
-        if (target < current_position)
-            right_index = middle_index;
-        else if (target > current_position)
-            left_index = middle_index + 1;
-        else if (target == current_position)
+        if (target == current_position)
             return middle_index;
+        else if (target < current_position)
+            right_index = middle_index;
+        else
+            left_index = middle_index + 1;
     }
     return std::nullopt;
 }

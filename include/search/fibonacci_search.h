@@ -9,6 +9,7 @@
 #include <cmath>
 #include <optional>
 #include <vector>
+#include <concepts>
 
 namespace wingmann::algorithms::search {
 
@@ -20,6 +21,7 @@ namespace wingmann::algorithms::search {
  * @return Index of the found item or std::nullopt if not found.
  */
 template<typename T>
+requires std::totally_ordered<T>
 std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target)
 {
     if (data.empty()) return std::nullopt;

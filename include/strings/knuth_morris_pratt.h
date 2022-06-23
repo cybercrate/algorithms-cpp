@@ -37,14 +37,13 @@ bool kmp(const std::string& text, const std::string& pattern)
         return failure;
     }(pattern);
 
-    for (std::size_t j = 0, k = 0; j < text_size; j++) {
-        while ((k != -1) && (pattern[k] != text[j]))
-            k = failure[k];
+    for (std::size_t i = 0, j = 0; i < text_size; i++) {
+        while ((j != -1) && (pattern[j] != text[i]))
+            j = failure[j];
 
-        if (++k == pattern_size)
-            return true;
+        if (++j == pattern_size) return true;
     }
-    return {};
+    return false;
 }
 
 } // namespace wingmann::algorithms::strings
