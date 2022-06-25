@@ -1,4 +1,5 @@
 #include "search.h"
+#include "search_test_helpers.h"
 
 #include "gtest/gtest.h"
 
@@ -16,16 +17,26 @@ TEST(linear_search, one_value)
 
 TEST(linear_search, several_values)
 {
-    auto data = std::vector{1, 1, 3, 7, 9, 11, 12, 14, 21, 34, 35, 64, 87, 91, 128, 199, 201};
-    auto target{34};
+    std::vector<int> data;
+    int target;
+    int searched_target;
 
-    EXPECT_EQ(9, linear_search(data, target));
+    for (std::size_t i = 0; i < 100; i++) {
+        data = get_sorted_vector_with_random_values<int>();
+        target = get_value<int>(data);
+        searched_target = data[linear_search(data, target).value()];
+
+        EXPECT_EQ(target, searched_target);
+    }
 }
 
 TEST(linear_search, not_found)
 {
-    auto data = std::vector{1, 1, 3, 7, 9, 11, 12, 14, 21, 34, 35, 64, 87, 91, 128, 199, 201};
-    auto target{2};
+    std::vector<int> data;
+    auto target = 1'001;
 
-    EXPECT_EQ(std::nullopt, linear_search(data, target));
+    for (std::size_t i = 0; i < 100; i++) {
+        data = get_sorted_vector_with_random_values<int>();
+        EXPECT_EQ(std::nullopt, linear_search(data, target));
+    }
 }
