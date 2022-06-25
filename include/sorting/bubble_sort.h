@@ -2,6 +2,7 @@
 #define WINGMANN_ALGORITHMS_SORTING_BUBBLE_SORT_H
 
 #include <concepts>
+#include <vector>
 
 /**
  * @brief Bubble sort algorithm implementation.

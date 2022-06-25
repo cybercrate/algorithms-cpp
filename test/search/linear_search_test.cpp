@@ -22,7 +22,7 @@ TEST(linear_search, several_values)
     int searched_target;
 
     for (std::size_t i = 0; i < 100; i++) {
-        data = get_sorted_vector_with_random_values<int>();
+        data = get_sorted_vector_with_random_values<int>(100);
         target = get_value<int>(data);
         searched_target = data[linear_search(data, target).value()];
 
