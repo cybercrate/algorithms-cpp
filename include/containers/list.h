@@ -1,6 +1,11 @@
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 
+/**
+ * @brief Doubly linked list implementation.
+ * @see https://en.wikipedia.org/wiki/Doubly_linked_list
+ */
+
 #include <cstddef>
 
 namespace wingmann::algorithms::containers {
@@ -209,7 +214,6 @@ void list<T>::delete_node(const T& delete_item)
             last_ = nullptr;
 
         size_--;
-
         delete current;
     }
     else {
@@ -245,8 +249,7 @@ void list<T>::copy(const list<T>& other)
     node* new_node;
     node* current;
 
-    if (first_ != nullptr)
-        destroy();
+    if (first_ != nullptr) destroy();
 
     if (other.first_ == nullptr) {
         first_ = nullptr;

@@ -1,6 +1,11 @@
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 
+/**
+ * @brief Queue (abstract data type) implementation.
+ * @see https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
+ */
+
 #include <optional>
 
 namespace wingmann::algorithms::containers {
