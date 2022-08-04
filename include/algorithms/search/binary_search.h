@@ -24,18 +24,16 @@ requires std::totally_ordered<T>
 std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
     if (data.empty()) return std::nullopt;
 
-    std::size_t left_index = 0;
+    std::size_t left_index{};
     std::size_t right_index = data.size();
     std::size_t middle_index;
-    std::size_t current_position;
 
     while (left_index < right_index) {
         middle_index = left_index + (right_index - left_index) / 2;
-        current_position = data[middle_index];
 
-        if (target == current_position)
+        if (auto& current_value = data[middle_index]; target == current_value)
             return middle_index;
-        else if (target < current_position)
+        else if (target < current_value)
             right_index = middle_index;
         else
             left_index = middle_index + 1;
