@@ -1,4 +1,4 @@
-#include "containers.h"
-#include "search.h"
-#include "sorting.h"
-#include "strings.h"
+#include "algorithms/containers.h"
+#include "algorithms/search.h"
+#include "algorithms/sorting.h"
+#include "algorithms/strings.h"
