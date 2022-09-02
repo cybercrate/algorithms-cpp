@@ -6,6 +6,8 @@
 #ifndef WINGMANN_ALGORITHMS_SEARCH_TERNARY_SEARCH_H
 #define WINGMANN_ALGORITHMS_SEARCH_TERNARY_SEARCH_H
 
+#include "binary_search.h"
+
 #include <optional>
 #include <vector>
 #include <concepts>

@@ -1,6 +1,7 @@
-#include <algorithms/sorting.h>
+#include "test_helpers/general.h"
 
-#include <test_helpers/general.h>
+#include <algorithms/sorting/bubble_sort.h>
+
 #include <gtest/gtest.h>
 
 using namespace wingmann::algorithms::sorting;

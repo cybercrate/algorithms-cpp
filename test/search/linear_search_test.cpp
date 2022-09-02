@@ -1,6 +1,7 @@
-#include <algorithms/search.h>
+#include "test_helpers/search.h"
 
-#include <test_helpers/search.h>
+#include <algorithms/search/linear_search.h>
+
 #include <gtest/gtest.h>
 
 using namespace wingmann::algorithms::search;
