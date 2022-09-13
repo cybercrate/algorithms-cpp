@@ -32,7 +32,7 @@ TEST(bubble_sort, two_values) {
 TEST(bubble_sort, several_values) {
     std::vector<int> data;
 
-    for (std::size_t i = 0; i < 100; i++) {
+    for (std::size_t i = 0; i < 10; i++) {
         data = get_vector_with_random_values<int>(1'000);
         bubble_sort(data);
 

@@ -20,7 +20,7 @@ TEST(ternary_search, several_values) {
     int target;
     int searched_target;
 
-    for (std::size_t i = 0; i < 100; i++) {
+    for (std::size_t i = 0; i < 10; i++) {
         data = get_sorted_vector_with_random_values<int>();
         target = get_value<int>(data);
         searched_target = data[ternary_search(data, target).value()];
@@ -33,7 +33,7 @@ TEST(ternary_search, not_found) {
     std::vector<int> data;
     auto target = 1'001;
 
-    for (std::size_t i = 0; i < 100; i++) {
+    for (std::size_t i = 0; i < 10; i++) {
         data = get_sorted_vector_with_random_values<int>();
         EXPECT_EQ(std::nullopt, ternary_search(data, target));
     }
