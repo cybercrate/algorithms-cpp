@@ -1,7 +1,6 @@
-/**
- * @brief Binary search algorithm implementation.
- * @see   https://en.wikipedia.org/wiki/Binary_search_algorithm
- */
+/// @file   binary_search.h
+/// @brief  Binary search algorithm implementation.
+/// @author Alexander Shavrov
 
 #ifndef WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_H
 #define WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_H
@@ -12,15 +11,16 @@
 
 namespace wingmann::algorithms::search {
 
-/**
- * @brief  Finds value in vector.
- * @tparam T Generic type of vector.
- * @param  data Vector to be searched in.
- * @param  value Value to be searched.
- * @return Index of the found item or std::nullopt if not found.
- */
-template<typename T>
-requires std::totally_ordered<T>
+/// @brief Finds value in vector.
+///
+/// @tparam T    Generic type of vector.
+/// @param data  Vector to be searched in.
+/// @param value Value to be searched.
+/// @return      Index of the found item or std::nullopt if not found.
+///
+/// @see https://en.wikipedia.org/wiki/Binary_search_algorithm
+///
+template<std::totally_ordered T>
 std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
     if (data.empty()) return std::nullopt;
 

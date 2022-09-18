@@ -1,7 +1,6 @@
-/**
- * @brief Doubly linked list implementation.
- * @see   https://en.wikipedia.org/wiki/Doubly_linked_list
- */
+/// @file   list.h
+/// @brief  Doubly linked list implementation.
+/// @author Alexander Shavrov
 
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_LIST_H
@@ -10,6 +9,11 @@
 
 namespace wingmann::algorithms::containers {
 
+/// @brief Doubly linked list.
+/// @tparam T Type of list elements.
+///
+/// @see https://en.wikipedia.org/wiki/Doubly_linked_list
+///
 template<typename T>
 class list {
     struct node {

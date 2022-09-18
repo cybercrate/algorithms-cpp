@@ -1,7 +1,6 @@
-/**
- * @brief Bubble sort algorithm implementation.
- * @see   https://en.wikipedia.org/wiki/Bubble_sort
- */
+/// @file   bubble_sort.h
+/// @brief  Bubble sort algorithm implementation.
+/// @author Alexander Shavrov
 
 #ifndef WINGMANN_ALGORITHMS_SORTING_BUBBLE_SORT_H
 #define WINGMANN_ALGORITHMS_SORTING_BUBBLE_SORT_H
@@ -11,11 +10,13 @@
 
 namespace wingmann::algorithms::sorting {
 
-/**
- * @brief  Sorts vector.
- * @tparam T Type of vector element.
- * @param  data Vector to sort.
- */
+/// @brief Sorts vector.
+///
+/// @tparam T   Type of vector element.
+/// @param data Vector to sort.
+///
+/// @see https://en.wikipedia.org/wiki/Bubble_sort
+///
 template<typename T>
 requires std::totally_ordered<T> && std::swappable<T>
 bool bubble_sort(std::vector<T>& data) {

@@ -1,7 +1,6 @@
-/**
- * @brief Queue (abstract data type) implementation.
- * @see   https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
- */
+/// @file   queue.h
+/// @brief  Queue (abstract data type) implementation.
+/// @author Alexander Shavrov
 
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
@@ -10,6 +9,11 @@
 
 namespace wingmann::algorithms::containers {
 
+/// @brief Queue ADT.
+/// @tparam T Type of queue elements.
+///
+/// @see https://en.wikipedia.org/wiki/Queue_(abstract_data_type)
+///
 template<typename T>
 class queue {
     struct node {
