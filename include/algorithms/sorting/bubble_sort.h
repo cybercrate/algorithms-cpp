@@ -19,7 +19,8 @@ namespace wingmann::algorithms::sorting {
 ///
 template<typename T>
 requires std::totally_ordered<T> && std::swappable<T>
-bool bubble_sort(std::vector<T>& data) {
+bool bubble_sort(std::vector<T>& data)
+{
     if (data.size() <= 1) return false;
 
     bool swapped;
@@ -34,7 +35,6 @@ bool bubble_sort(std::vector<T>& data) {
                 swapped = true;
             }
         }
-
         if (!swapped) break;
     }
     return true;

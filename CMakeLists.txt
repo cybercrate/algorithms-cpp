@@ -8,7 +8,7 @@ else()
         CACHE STRING "Vcpkg toolchain file")
 endif()
 
-project(algorithms VERSION 1.0.0 LANGUAGES CXX C)
+project(algorithms VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

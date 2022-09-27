@@ -24,7 +24,8 @@ namespace wingmann::algorithms::search {
 /// @see https://en.wikipedia.org/wiki/Ternary_search
 ///
 template<std::totally_ordered T>
-std::optional<std::size_t> ternary_search(const std::vector<T>& data, const T& target) {
+std::optional<std::size_t> ternary_search(const std::vector<T>& data, const T& target)
+{
     if (data.empty())
         return std::nullopt;
     else if (data.size() < 1'000)
@@ -48,9 +49,11 @@ std::optional<std::size_t> ternary_search(const std::vector<T>& data, const T& t
 
         if (target < value.first) {
             index.second = middle_index.first - 1;
-        } else if (target > value.second) {
+        }
+        else if (target > value.second) {
             index.first = middle_index.second + 1;
-        } else {
+        }
+        else {
             index.first = middle_index.first + 1;
             index.second = middle_index.second - 1;
         }
