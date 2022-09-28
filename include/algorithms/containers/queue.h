@@ -51,8 +51,7 @@ void queue<T>::enqueue(T item) {
     if (is_empty()) {
         front_ = new_node;
         rear_ = new_node;
-    }
-    else {
+    } else {
         rear_->next = new_node;
         rear_ = rear_->next;
     }
@@ -60,8 +59,7 @@ void queue<T>::enqueue(T item) {
 }
 
 template<typename T>
-std::optional<T> queue<T>::dequeue()
-{
+std::optional<T> queue<T>::dequeue() {
     if (!is_empty()) {
         T result = front_->data;
         auto temp = front_;
@@ -74,8 +72,7 @@ std::optional<T> queue<T>::dequeue()
 }
 
 template<typename T>
-std::optional<T> queue<T>::front()
-{
+std::optional<T> queue<T>::front() {
     if (!is_empty())
         return front_->data;
     return std::nullopt;

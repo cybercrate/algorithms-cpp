@@ -4,16 +4,14 @@
 
 using list_type = wingmann::algorithms::containers::list<int>;
 
-TEST(list, empty)
-{
+TEST(list, empty) {
     list_type list{};
 
     EXPECT_TRUE(list.is_empty());
     EXPECT_EQ(0, list.size());
 }
 
-TEST(list, add_element)
-{
+TEST(list, add_element) {
     list_type list{};
     list.insert(7);
     list.insert(5);
@@ -21,8 +19,7 @@ TEST(list, add_element)
     EXPECT_EQ(2, list.size());
 }
 
-TEST(list, remove_node)
-{
+TEST(list, remove_node) {
     list_type list{};
     list.insert(8);
     list.insert(2);
@@ -36,8 +33,7 @@ TEST(list, remove_node)
     EXPECT_EQ(3, list.size());
 }
 
-TEST(list, get_front)
-{
+TEST(list, get_front) {
     list_type list{};
     list.insert(1);
     list.insert(2);
@@ -46,8 +42,7 @@ TEST(list, get_front)
     EXPECT_EQ(1, list.front());
 }
 
-TEST(list, get_back)
-{
+TEST(list, get_back) {
     list_type list{};
     list.insert(1);
     list.insert(2);
@@ -56,8 +51,7 @@ TEST(list, get_back)
     EXPECT_EQ(9, list.back());
 }
 
-TEST(list, destroy)
-{
+TEST(list, destroy) {
     list_type list{};
     list.insert(4);
     list.insert(8);

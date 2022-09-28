@@ -7,18 +7,15 @@
 using namespace wingmann::algorithms::search;
 using namespace wingmann::utility::test_helpers;
 
-TEST(binary_search_recursive, empty)
-{
+TEST(binary_search_recursive, empty) {
     EXPECT_EQ(std::nullopt, binary_search_recursive(std::vector<int>{}, 1));
 }
 
-TEST(binary_search_recursive, one_value)
-{
+TEST(binary_search_recursive, one_value) {
     EXPECT_EQ(0, binary_search_recursive(std::vector<int>{64}, 64).value());
 }
 
-TEST(binary_search_recursive, several_values)
-{
+TEST(binary_search_recursive, several_values) {
     std::vector<int> data;
     int target;
     int searched_target;
@@ -32,8 +29,7 @@ TEST(binary_search_recursive, several_values)
     }
 }
 
-TEST(binary_search_recursive, not_found)
-{
+TEST(binary_search_recursive, not_found) {
     std::vector<int> data;
     auto target = 1'001;
 
