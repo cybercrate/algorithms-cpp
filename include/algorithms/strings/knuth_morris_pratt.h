@@ -11,7 +11,8 @@
 namespace wingmann::algorithms::strings {
 
 /// @brief Gets failure array.
-auto get_failure = [](const std::string& pattern) {
+auto get_failure = [](const std::string& pattern)
+{
     auto pattern_size = pattern.size();
     auto failure = std::vector<std::size_t>(pattern_size + 1);
     failure[0] = -1;
@@ -33,7 +34,8 @@ auto get_failure = [](const std::string& pattern) {
 ///
 /// @see https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
 ///
-bool kmp(const std::string& text, const std::string& pattern) {
+bool kmp(const std::string& text, const std::string& pattern)
+{
     auto text_size = text.size();
     auto pattern_size = pattern.size();
     auto failure = get_failure(pattern);

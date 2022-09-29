@@ -7,15 +7,18 @@
 using namespace wingmann::algorithms::search;
 using namespace wingmann::utility::test_helpers;
 
-TEST(ternary_search, empty) {
+TEST(ternary_search, empty)
+{
     EXPECT_EQ(std::nullopt, ternary_search(std::vector<int>{}, 1));
 }
 
-TEST(ternary_search, one_value) {
+TEST(ternary_search, one_value)
+{
     EXPECT_EQ(0, ternary_search(std::vector<int>{64}, 64).value());
 }
 
-TEST(ternary_search, several_values) {
+TEST(ternary_search, several_values)
+{
     std::vector<int> data;
     int target;
     int searched_target;
@@ -29,7 +32,8 @@ TEST(ternary_search, several_values) {
     }
 }
 
-TEST(ternary_search, not_found) {
+TEST(ternary_search, not_found)
+{
     std::vector<int> data;
     auto target = 1'001;
 

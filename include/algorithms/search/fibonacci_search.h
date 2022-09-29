@@ -22,8 +22,10 @@ namespace wingmann::algorithms::search {
 /// @see https://en.wikipedia.org/wiki/Fibonacci_search_technique
 ///
 template<std::totally_ordered T>
-std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target) {
-    if (data.empty()) return std::nullopt;
+std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T& target)
+{
+    if (data.empty())
+        return std::nullopt;
 
     std::size_t last{};
     std::size_t current{1};
@@ -47,11 +49,13 @@ std::optional<std::size_t> fibonacci_search(const std::vector<T>& data, const T&
             current = last;
             last = next - current;
             offset = static_cast<int>(index);
-        } else if (data[index] > target) {
+        }
+        else if (data[index] > target) {
             next = last;
             current = current - last;
             last = next - current;
-        } else {
+        }
+        else {
             return index;
         }
     }

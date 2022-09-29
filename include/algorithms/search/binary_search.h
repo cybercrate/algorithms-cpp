@@ -21,7 +21,8 @@ namespace wingmann::algorithms::search {
 /// @see https://en.wikipedia.org/wiki/Binary_search_algorithm
 ///
 template<std::totally_ordered T>
-std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
+std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
+{
     if (data.empty()) return std::nullopt;
 
     std::size_t left_index{};
