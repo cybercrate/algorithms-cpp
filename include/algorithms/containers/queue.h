@@ -1,6 +1,13 @@
 /// @file   queue.h
+/// @author Alexander Shavrov (alexander.shavrov@outlook.com)
 /// @brief  Queue (abstract data type) implementation.
-/// @author Alexander Shavrov
+/// @date   2022-10-02
+///
+/// @copyright Copyright (c) 2022
+///
+/// This file is distributed under the MIT License.
+/// See LICENSE file for details.
+///
 
 #ifndef WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H
 #define WINGMANN_ALGORITHMS_CONTAINERS_QUEUE_H

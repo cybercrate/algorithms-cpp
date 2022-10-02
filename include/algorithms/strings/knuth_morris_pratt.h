@@ -1,6 +1,13 @@
 /// @file   knuth_morris_pratt.h
+/// @author Alexander Shavrov (alexander.shavrov@outlook.com)
 /// @brief  Knuth-Morris-Pratt substring searching algorithm implementation.
-/// @author Alexander Shavrov
+/// @date   2022-10-02
+///
+/// @copyright Copyright (c) 2022
+///
+/// This file is distributed under the MIT License.
+/// See LICENSE file for details.
+///
 
 #ifndef WINGMANN_ALGORITHMS_STRINGS_KNUTH_MORRIS_PRATT_H
 #define WINGMANN_ALGORITHMS_STRINGS_KNUTH_MORRIS_PRATT_H
