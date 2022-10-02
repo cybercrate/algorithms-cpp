@@ -7,17 +7,17 @@
 using namespace wingmann::algorithms::search;
 using namespace wingmann::utility::test_helpers;
 
-TEST(fibonacci_search, empty)
+TEST(algorithms_search, fibonacci_search_empty)
 {
     EXPECT_EQ(std::nullopt, fibonacci_search(std::vector<int>{}, 1));
 }
 
-TEST(fibonacci_search, one_value)
+TEST(algorithms_search, fibonacci_search_one_value)
 {
     EXPECT_EQ(0, fibonacci_search(std::vector<int>{64}, 64).value());
 }
 
-TEST(fibonacci_search, several_values)
+TEST(algorithms_search, fibonacci_search_several_values)
 {
     std::vector<int> data;
     int target;

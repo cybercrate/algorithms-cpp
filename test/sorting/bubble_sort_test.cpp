@@ -7,19 +7,19 @@
 using namespace wingmann::algorithms::sorting;
 using namespace wingmann::utility::test_helpers;
 
-TEST(bubble_sort, empty)
+TEST(algorithms_sorting, bubble_sort_empty)
 {
     std::vector<int> data{};
     EXPECT_FALSE(bubble_sort(data));
 }
 
-TEST(bubble_sort, one_value)
+TEST(algorithms_sorting, bubble_sort_one_value)
 {
     std::vector<int> data{64};
     EXPECT_FALSE(bubble_sort(data));
 }
 
-TEST(bubble_sort, two_values)
+TEST(algorithms_sorting, bubble_sort_two_values)
 {
     std::vector<int> data;
 
@@ -32,7 +32,7 @@ TEST(bubble_sort, two_values)
     }
 }
 
-TEST(bubble_sort, several_values)
+TEST(algorithms_sorting, bubble_sort_several_values)
 {
     std::vector<int> data;
 

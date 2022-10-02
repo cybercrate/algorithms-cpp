@@ -7,17 +7,17 @@
 using namespace wingmann::algorithms::search;
 using namespace wingmann::utility::test_helpers;
 
-TEST(linear_search, empty)
+TEST(algorithms_search, linear_search_empty)
 {
     EXPECT_EQ(std::nullopt, linear_search(std::vector<int>{}, 1));
 }
 
-TEST(linear_search, one_value)
+TEST(algorithms_search, linear_search_one_value)
 {
     EXPECT_EQ(0, linear_search(std::vector<int>{64}, 64).value());
 }
 
-TEST(linear_search, several_values)
+TEST(algorithms_search, linear_search_several_values)
 {
     std::vector<int> data;
     int target;
@@ -32,7 +32,7 @@ TEST(linear_search, several_values)
     }
 }
 
-TEST(linear_search, not_found)
+TEST(algorithms_search, linear_search_not_found)
 {
     std::vector<int> data;
     auto target = 1'001;

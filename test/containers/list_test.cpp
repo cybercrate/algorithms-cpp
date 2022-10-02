@@ -4,7 +4,7 @@
 
 using list_type = wingmann::algorithms::containers::list<int>;
 
-TEST(list, empty)
+TEST(algorithms_contatiners, list_empty)
 {
     list_type list{};
 
@@ -12,7 +12,7 @@ TEST(list, empty)
     EXPECT_EQ(0, list.size());
 }
 
-TEST(list, add_element)
+TEST(algorithms_contatiners, list_add_element)
 {
     list_type list{};
     list.insert(7);
@@ -21,7 +21,7 @@ TEST(list, add_element)
     EXPECT_EQ(2, list.size());
 }
 
-TEST(list, remove_node)
+TEST(algorithms_contatiners, list_remove_node)
 {
     list_type list{};
     list.insert(8);
@@ -36,7 +36,7 @@ TEST(list, remove_node)
     EXPECT_EQ(3, list.size());
 }
 
-TEST(list, get_front)
+TEST(algorithms_contatiners, list_get_front)
 {
     list_type list{};
     list.insert(1);
@@ -46,7 +46,7 @@ TEST(list, get_front)
     EXPECT_EQ(1, list.front());
 }
 
-TEST(list, get_back)
+TEST(algorithms_contatiners, list_get_back)
 {
     list_type list{};
     list.insert(1);
@@ -56,7 +56,7 @@ TEST(list, get_back)
     EXPECT_EQ(9, list.back());
 }
 
-TEST(list, destroy)
+TEST(algorithms_contatiners, list_destroy)
 {
     list_type list{};
     list.insert(4);

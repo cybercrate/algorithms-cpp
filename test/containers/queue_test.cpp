@@ -4,7 +4,7 @@
 
 using queue_type = wingmann::algorithms::containers::queue<int>;
 
-TEST(queue, empty)
+TEST(algorithms_contatiners, queue_empty)
 {
     queue_type queue{};
 
@@ -12,7 +12,7 @@ TEST(queue, empty)
     EXPECT_TRUE(queue.is_empty());
 }
 
-TEST(queue, enqueue)
+TEST(algorithms_contatiners, queue_enqueue)
 {
     queue_type queue{};
     queue.enqueue(5);
@@ -26,7 +26,7 @@ TEST(queue, enqueue)
     EXPECT_EQ(7, queue.size());
 }
 
-TEST(queue, dequeue)
+TEST(algorithms_contatiners, queue_dequeue)
 {
     queue_type queue{};
     queue.enqueue(5);
@@ -44,7 +44,7 @@ TEST(queue, dequeue)
     EXPECT_EQ(3, queue.size());
 }
 
-TEST(queue, front)
+TEST(algorithms_contatiners, queue_front)
 {
     queue_type queue{};
     queue.enqueue(5);
