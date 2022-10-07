@@ -12,8 +12,8 @@
 #ifndef WINGMANN_ALGORITHMS_STRINGS_KNUTH_MORRIS_PRATT_H
 #define WINGMANN_ALGORITHMS_STRINGS_KNUTH_MORRIS_PRATT_H
 
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace wingmann::algorithms::strings {
 

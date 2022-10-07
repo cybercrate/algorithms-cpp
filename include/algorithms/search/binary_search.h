@@ -12,9 +12,9 @@
 #ifndef WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_H
 #define WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_H
 
+#include <concepts>
 #include <optional>
 #include <vector>
-#include <concepts>
 
 namespace wingmann::algorithms::search {
 

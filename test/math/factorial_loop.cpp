@@ -1,4 +1,4 @@
-#include <algorithms/math.h>
+#include <algorithms/math/factorial.h>
 
 #include <gtest/gtest.h>
 

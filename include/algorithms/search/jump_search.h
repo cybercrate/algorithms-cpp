@@ -13,9 +13,9 @@
 #define WINGMANN_ALGORITHMS_SEARCH_JUMP_SEARCH_H
 
 #include <cmath>
+#include <concepts>
 #include <optional>
 #include <vector>
-#include <concepts>
 
 namespace wingmann::algorithms::search {
 

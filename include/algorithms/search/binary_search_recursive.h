@@ -12,9 +12,9 @@
 #ifndef WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_RECURSIVE_H
 #define WINGMANN_ALGORITHMS_SEARCH_BINARY_SEARCH_RECURSIVE_H
 
+#include <concepts>
 #include <optional>
 #include <vector>
-#include <concepts>
 
 namespace wingmann::algorithms::search {
 
@@ -31,10 +31,10 @@ namespace wingmann::algorithms::search {
 ///
 template<std::totally_ordered T>
 std::optional<std::size_t> binary_search_recursive(
-    const std::vector<T>& data,
-    const T& target,
-    std::size_t left_index,
-    std::size_t right_index)
+        const std::vector<T>& data,
+        const T& target,
+        std::size_t left_index,
+        std::size_t right_index)
 {
     if (left_index < right_index) {
         std::size_t middle_index = left_index + (right_index - left_index) / 2;

@@ -14,10 +14,10 @@
 
 #include "binary_search.h"
 
-#include <optional>
-#include <vector>
 #include <concepts>
+#include <optional>
 #include <utility>
+#include <vector>
 
 namespace wingmann::algorithms::search {
 
