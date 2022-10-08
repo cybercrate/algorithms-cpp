@@ -25,7 +25,8 @@ namespace wingmann::algorithms::math {
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
 template<typename T>
-T factorial(T value) requires std::integral<T> && (!std::same_as<T, bool>)
+requires std::integral<T> && (!std::same_as<T, bool>)
+T factorial(T value)
 {
     return (value <= 0) ? 1 : value * factorial(value - 1);
 }
@@ -39,7 +40,8 @@ T factorial(T value) requires std::integral<T> && (!std::same_as<T, bool>)
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
 template<typename T>
-T factorial_loop(T value) requires std::integral<T> && (!std::same_as<T, bool>)
+requires std::integral<T> && (!std::same_as<T, bool>)
+T factorial_loop(T value)
 {
     T result{1};
 

@@ -25,7 +25,7 @@ auto get_failure = [](const std::string& pattern)
     failure[0] = -1;
 
     for (std::size_t i = 0, j = failure[0]; i < pattern_size; i++) {
-        while ((j != std::numeric_limits<std::size_t>::max()) && (pattern[j] != pattern[i]))
+        while ((j != std::string::npos) && (pattern[j] != pattern[i]))
             j = failure[j];
 
         failure[i + 1] = ++j;
@@ -48,7 +48,7 @@ bool kmp(const std::string& text, const std::string& pattern)
     auto failure = get_failure(pattern);
 
     for (std::size_t i = 0, j = 0; i < text_size; i++) {
-        while ((j != std::numeric_limits<std::size_t>::max()) && (pattern[j] != text[i]))
+        while ((j != std::string::npos) && (pattern[j] != text[i]))
             j = failure[j];
 
         if (++j == pattern_size) return true;

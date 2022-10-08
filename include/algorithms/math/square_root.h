@@ -26,8 +26,8 @@ namespace wingmann::algorithms::math {
 /// @see https://en.wikipedia.org/wiki/Square_root
 ///
 template<typename T>
-T square_root(T value)
 requires (std::integral<T> && (!std::same_as<T, bool>)) || std::floating_point<T>
+T square_root(T value)
 {
     const auto epsilon{0.01};
     const auto doubled_value = static_cast<double>(value);

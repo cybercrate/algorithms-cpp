@@ -25,7 +25,8 @@ namespace wingmann::algorithms::math {
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
 template<typename T>
-T fibonacci(T value) requires std::integral<T> && (!std::same_as<T, bool>)
+requires std::integral<T> && (!std::same_as<T, bool>)
+T fibonacci(T value)
 {
     return (value <= 1) ? value : fibonacci(value - 1) + fibonacci(value - 2);
 }
@@ -39,7 +40,8 @@ T fibonacci(T value) requires std::integral<T> && (!std::same_as<T, bool>)
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
 template<typename T>
-T fibonacci_loop(T value) requires std::integral<T> && (!std::same_as<T, bool>)
+requires std::integral<T> && (!std::same_as<T, bool>)
+T fibonacci_loop(T value)
 {
     T first{};
     T second{1};
