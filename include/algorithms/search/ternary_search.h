@@ -38,7 +38,7 @@ std::optional<std::size_t> ternary_search(const std::vector<T>& data, const T& t
     else if (data.size() < 1'000)
         return binary_search(data, target);
 
-    std::pair<std::size_t, std::size_t> index{std::size_t{}, data.size()};
+    std::pair<std::size_t, std::size_t> index{{}, data.size()};
     std::pair<std::size_t, std::size_t> middle_index{};
     std::pair<std::size_t, std::size_t> value{};
 
@@ -51,16 +51,16 @@ std::optional<std::size_t> ternary_search(const std::vector<T>& data, const T& t
         value.first = data[middle_index.first];
         value.second = data[middle_index.second];
 
-        if (target == value.first)
+        if (target == static_cast<T>(value.first))
             return middle_index.first;
 
-        if (target == value.second)
+        if (target == static_cast<T>(value.second))
             return middle_index.second;
 
-        if (target < value.first) {
+        if (target < static_cast<T>(value.first)) {
             index.second = middle_index.first - 1;
         }
-        else if (target > value.second) {
+        else if (target > static_cast<T>(value.second)) {
             index.first = middle_index.second + 1;
         }
         else {

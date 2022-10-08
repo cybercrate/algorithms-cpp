@@ -45,7 +45,7 @@ T fibonacci_loop(T value) requires std::integral<T> && (!std::same_as<T, bool>)
     T second{1};
     T next;
 
-    for (std::size_t i = 3; i <= value + 1; ++i) {
+    for (T i = 3; i <= value + 1; ++i) {
         next = first + second;
         first = second;
         second = next;
