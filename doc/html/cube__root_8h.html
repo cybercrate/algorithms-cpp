@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>algorithms: include/algorithms/sorting/bubble_sort.h File Reference</title>
+<title>algorithms: include/algorithms/math/cube_root.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,75 +70,76 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6b92e76864548cad5abed9ff7db49a2b.html">algorithms</a></li><li class="navelem"><a class="el" href="dir_7af2b990ebb4755211e19e235788013c.html">sorting</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_6b92e76864548cad5abed9ff7db49a2b.html">algorithms</a></li><li class="navelem"><a class="el" href="dir_ce43d55b0f80294a5c324ae7114ca9e9.html">math</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">bubble_sort.h File Reference</div></div>
+  <div class="headertitle"><div class="title">cube_root.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Bubble sort algorithm implementation.  
+<p>Cube root functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;concepts&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;concepts&gt;</code><br />
 </div>
-<p><a href="bubble__sort_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="cube__root_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae95457766e27e1a27776549166e58be2"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires std::totally_ordered&lt;T&gt; &amp;&amp; std::swappable&lt;T&gt;</td></tr>
-<tr class="memitem:ae95457766e27e1a27776549166e58be2"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="bubble__sort_8h.html#ae95457766e27e1a27776549166e58be2">wingmann::algorithms::sorting::bubble_sort</a> (std::vector&lt; T &gt; &amp;data)</td></tr>
-<tr class="memdesc:ae95457766e27e1a27776549166e58be2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts vector.  <a href="bubble__sort_8h.html#ae95457766e27e1a27776549166e58be2">More...</a><br /></td></tr>
-<tr class="separator:ae95457766e27e1a27776549166e58be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7eba366fdb529ea521b98b8a1b1b45e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires std::floating_point&lt;T&gt; || (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;))</td></tr>
+<tr class="memitem:ac7eba366fdb529ea521b98b8a1b1b45e"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="cube__root_8h.html#ac7eba366fdb529ea521b98b8a1b1b45e">wingmann::algorithms::math::cube_root</a> (T value)</td></tr>
+<tr class="memdesc:ac7eba366fdb529ea521b98b8a1b1b45e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes cube root.  <a href="cube__root_8h.html#ac7eba366fdb529ea521b98b8a1b1b45e">More...</a><br /></td></tr>
+<tr class="separator:ac7eba366fdb529ea521b98b8a1b1b45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Bubble sort algorithm implementation. </p>
+<div class="textblock"><p >Cube root functions. </p>
 <dl class="section author"><dt>Author</dt><dd>Alexander Shavrov (<a href="#" onclick="location.href='mai'+'lto:'+'ale'+'xa'+'nde'+'r.'+'sha'+'vr'+'ov@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">alexa<span class="obfuscator">.nosp@m.</span>nder<span class="obfuscator">.nosp@m.</span>.shav<span class="obfuscator">.nosp@m.</span>rov@<span class="obfuscator">.nosp@m.</span>outlo<span class="obfuscator">.nosp@m.</span>ok.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2022-10-02</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022-10-08</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022</dd></dl>
 <p>This file is distributed under the MIT License. See LICENSE file for details. </p>
 
-<p class="definition">Definition in file <a class="el" href="bubble__sort_8h_source.html">bubble_sort.h</a>.</p>
+<p class="definition">Definition in file <a class="el" href="cube__root_8h_source.html">cube_root.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae95457766e27e1a27776549166e58be2" name="ae95457766e27e1a27776549166e58be2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae95457766e27e1a27776549166e58be2">&#9670;&#160;</a></span>bubble_sort()</h2>
+<a id="ac7eba366fdb529ea521b98b8a1b1b45e" name="ac7eba366fdb529ea521b98b8a1b1b45e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7eba366fdb529ea521b98b8a1b1b45e">&#9670;&#160;</a></span>cube_root()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; <br />
-requires std::totally_ordered&lt;T&gt; &amp;&amp; std::swappable&lt;T&gt;</div>
+requires std::floating_point&lt;T&gt; || (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;))</div>
       <table class="memname">
         <tr>
-          <td class="memname">bool wingmann::algorithms::sorting::bubble_sort </td>
+          <td class="memname">T wingmann::algorithms::math::cube_root </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sorts vector. </p>
+<p>Computes cube root. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>Type of vector element. </td></tr>
+    <tr><td class="paramname">T</td><td>Type of a number. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>Vector to sort.</td></tr>
+    <tr><td class="paramname">value</td><td>A number. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Bubble_sort">https://en.wikipedia.org/wiki/Bubble_sort</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Cube root of number.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Cube_root">https://en.wikipedia.org/wiki/Cube_root</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bubble__sort_8h_source.html#l00029">29</a> of file <a class="el" href="bubble__sort_8h_source.html">bubble_sort.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cube__root_8h_source.html#l00030">30</a> of file <a class="el" href="cube__root_8h_source.html">cube_root.h</a>.</p>
 
 </div>
 </div>

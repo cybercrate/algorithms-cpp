@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ternary_5fsearch_0',['ternary_search',['../ternary__search_8h.html#aafc823db52e289701a9f26fe0d281859',1,'wingmann::algorithms::search']]]
+  ['square_5froot_0',['square_root',['../square__root_8h.html#a369fd0bf4062696114bb08cc7f706a39',1,'wingmann::algorithms::math']]]
 ];

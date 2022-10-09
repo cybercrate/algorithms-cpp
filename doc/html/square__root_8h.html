@@ -89,11 +89,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a012d7ef7839b420920aea26bf899b47a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
-requires (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;)) || std::floating_point&lt;T&gt;</td></tr>
-<tr class="memitem:a012d7ef7839b420920aea26bf899b47a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="square__root_8h.html#a012d7ef7839b420920aea26bf899b47a">wingmann::algorithms::math::square_root</a> (T value)</td></tr>
-<tr class="memdesc:a012d7ef7839b420920aea26bf899b47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes square root.  <a href="square__root_8h.html#a012d7ef7839b420920aea26bf899b47a">More...</a><br /></td></tr>
-<tr class="separator:a012d7ef7839b420920aea26bf899b47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a369fd0bf4062696114bb08cc7f706a39"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; <br />
+requires std::floating_point&lt;T&gt; || (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;))</td></tr>
+<tr class="memitem:a369fd0bf4062696114bb08cc7f706a39"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="square__root_8h.html#a369fd0bf4062696114bb08cc7f706a39">wingmann::algorithms::math::square_root</a> (T value)</td></tr>
+<tr class="memdesc:a369fd0bf4062696114bb08cc7f706a39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes square root.  <a href="square__root_8h.html#a369fd0bf4062696114bb08cc7f706a39">More...</a><br /></td></tr>
+<tr class="separator:a369fd0bf4062696114bb08cc7f706a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Square root functions. </p>
@@ -104,14 +104,14 @@ requires (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;)) || s
 
 <p class="definition">Definition in file <a class="el" href="square__root_8h_source.html">square_root.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a012d7ef7839b420920aea26bf899b47a" name="a012d7ef7839b420920aea26bf899b47a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a012d7ef7839b420920aea26bf899b47a">&#9670;&#160;</a></span>square_root()</h2>
+<a id="a369fd0bf4062696114bb08cc7f706a39" name="a369fd0bf4062696114bb08cc7f706a39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a369fd0bf4062696114bb08cc7f706a39">&#9670;&#160;</a></span>square_root()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T &gt; <br />
-requires (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;)) || std::floating_point&lt;T&gt;</div>
+requires std::floating_point&lt;T&gt; || (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;))</div>
       <table class="memname">
         <tr>
           <td class="memname">T wingmann::algorithms::math::square_root </td>
@@ -126,7 +126,7 @@ requires (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;)) || s
 <p>Computes square root. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">T</td><td>Type of number. </td></tr>
+    <tr><td class="paramname">T</td><td>Type of a number. </td></tr>
   </table>
   </dd>
 </dl>
@@ -139,7 +139,7 @@ requires (std::integral&lt;T&gt; &amp;&amp; (!std::same_as&lt;T, bool&gt;)) || s
 <dl class="section return"><dt>Returns</dt><dd>Square root of number.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Square_root">https://en.wikipedia.org/wiki/Square_root</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="square__root_8h_source.html#l00029">29</a> of file <a class="el" href="square__root_8h_source.html">square_root.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="square__root_8h_source.html#l00030">30</a> of file <a class="el" href="square__root_8h_source.html">square_root.h</a>.</p>
 
 </div>
 </div>

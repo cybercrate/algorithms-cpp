@@ -169,7 +169,7 @@ Variables</h2></td></tr>
 <div class="line">    failure[0] = -1;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (std::size_t i = 0, j = failure[0]; i &lt; pattern_size; i++) {</div>
-<div class="line">        <span class="keywordflow">while</span> ((j != -1) &amp;&amp; (pattern[j] != pattern[i]))</div>
+<div class="line">        <span class="keywordflow">while</span> ((j != std::string::npos) &amp;&amp; (pattern[j] != pattern[i]))</div>
 <div class="line">            j = failure[j];</div>
 <div class="line"> </div>
 <div class="line">        failure[i + 1] = ++j;</div>

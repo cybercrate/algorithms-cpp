@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kmp_0',['kmp',['../knuth__morris__pratt_8h.html#ae7fdb0a5ece1108128ed8985da44810a',1,'wingmann::algorithms::strings']]]
+  ['jump_5fsearch_0',['jump_search',['../jump__search_8h.html#aff2ee4670ba0ef398dc95e857948a36f',1,'wingmann::algorithms::search']]]
 ];

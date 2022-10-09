@@ -94,7 +94,7 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    failure[0] = -1;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">for</span> (std::size_t i = 0, j = failure[0]; i &lt; pattern_size; i++) {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">while</span> ((j != -1) &amp;&amp; (pattern[j] != pattern[i]))</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keywordflow">while</span> ((j != std::string::npos) &amp;&amp; (pattern[j] != pattern[i]))</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            j = failure[j];</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        failure[i + 1] = ++j;</div>
@@ -109,7 +109,7 @@ $(function() {
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">auto</span> failure = <a class="code hl_variable" href="knuth__morris__pratt_8h.html#aa29921192c5de9cf85e5d81a1bf0ff3a">get_failure</a>(pattern);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">for</span> (std::size_t i = 0, j = 0; i &lt; text_size; i++) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">while</span> ((j != -1) &amp;&amp; (pattern[j] != text[i]))</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">while</span> ((j != std::string::npos) &amp;&amp; (pattern[j] != text[i]))</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            j = failure[j];</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> (++j == pattern_size) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>

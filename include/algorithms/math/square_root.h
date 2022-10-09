@@ -19,17 +19,18 @@ namespace wingmann::algorithms::math {
 
 /// @brief Computes square root.
 ///
-/// @tparam T    Type of number.
+/// @tparam T    Type of a number.
 /// @param value A number.
 /// @return      Square root of number.
 ///
 /// @see https://en.wikipedia.org/wiki/Square_root
 ///
 template<typename T>
-requires (std::integral<T> && (!std::same_as<T, bool>)) || std::floating_point<T>
+requires std::floating_point<T> || (std::integral<T> && (!std::same_as<T, bool>))
 T square_root(T value)
 {
-    const auto epsilon{0.01};
+    // Set precision.
+    const auto epsilon{0.0000001};
     const auto doubled_value = static_cast<double>(value);
 
     auto low{0.0};
