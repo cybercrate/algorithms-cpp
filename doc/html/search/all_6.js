@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['linear_5fsearch_0',['linear_search',['../linear__search_8h.html#abbda53266b93beebda8da74590513179',1,'wingmann::algorithms::search']]],
-  ['linear_5fsearch_2eh_1',['linear_search.h',['../linear__search_8h.html',1,'']]]
+  ['jump_5fsearch_0',['jump_search',['../jump__search_8h.html#aff2ee4670ba0ef398dc95e857948a36f',1,'wingmann::algorithms::search']]],
+  ['jump_5fsearch_2eh_1',['jump_search.h',['../jump__search_8h.html',1,'']]]
 ];

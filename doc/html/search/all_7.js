@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['square_5froot_0',['square_root',['../square__root_8h.html#a369fd0bf4062696114bb08cc7f706a39',1,'wingmann::algorithms::math']]],
-  ['square_5froot_2eh_1',['square_root.h',['../square__root_8h.html',1,'']]]
+  ['kmp_0',['kmp',['../knuth__morris__pratt_8h.html#ae7fdb0a5ece1108128ed8985da44810a',1,'wingmann::algorithms::strings']]],
+  ['knuth_5fmorris_5fpratt_2eh_1',['knuth_morris_pratt.h',['../knuth__morris__pratt_8h.html',1,'']]]
 ];
