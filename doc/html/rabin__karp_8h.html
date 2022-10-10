@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>algorithms: include/algorithms/strings/knuth_morris_pratt.h File Reference</title>
+<title>algorithms: include/algorithms/strings/rabin_karp.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,40 +76,41 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">knuth_morris_pratt.h File Reference</div></div>
+  <div class="headertitle"><div class="title">rabin_karp.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Knuth-Morris-Pratt substring searching algorithm implementation.  
+<p>Rabin-Karp substring searching algorithm implementation.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div>
-<p><a href="knuth__morris__pratt_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="rabin__karp_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae7fdb0a5ece1108128ed8985da44810a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="knuth__morris__pratt_8h.html#ae7fdb0a5ece1108128ed8985da44810a">wingmann::algorithms::strings::kmp</a> (const std::string &amp;text, const std::string &amp;pattern)</td></tr>
-<tr class="memdesc:ae7fdb0a5ece1108128ed8985da44810a"><td class="mdescLeft">&#160;</td><td class="mdescRight">KMP algorithm to find a pattern in a text.  <a href="knuth__morris__pratt_8h.html#ae7fdb0a5ece1108128ed8985da44810a">More...</a><br /></td></tr>
-<tr class="separator:ae7fdb0a5ece1108128ed8985da44810a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5af948f46ee82a9cf76c284afd111fda"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rabin__karp_8h.html#a5af948f46ee82a9cf76c284afd111fda">wingmann::algorithms::strings::rabin_karp</a> (const std::string &amp;text, const std::string &amp;pattern)</td></tr>
+<tr class="memdesc:a5af948f46ee82a9cf76c284afd111fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform string pattern search using Rabin-Karp algorithm.  <a href="rabin__karp_8h.html#a5af948f46ee82a9cf76c284afd111fda">More...</a><br /></td></tr>
+<tr class="separator:a5af948f46ee82a9cf76c284afd111fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Knuth-Morris-Pratt substring searching algorithm implementation. </p>
+<div class="textblock"><p >Rabin-Karp substring searching algorithm implementation. </p>
 <dl class="section author"><dt>Author</dt><dd>Alexander Shavrov (<a href="#" onclick="location.href='mai'+'lto:'+'ale'+'xa'+'nde'+'r.'+'sha'+'vr'+'ov@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">alexa<span class="obfuscator">.nosp@m.</span>nder<span class="obfuscator">.nosp@m.</span>.shav<span class="obfuscator">.nosp@m.</span>rov@<span class="obfuscator">.nosp@m.</span>outlo<span class="obfuscator">.nosp@m.</span>ok.c<span class="obfuscator">.nosp@m.</span>om</a>) </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2022-10-02</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2022-10-11</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022</dd></dl>
 <p>This file is distributed under the MIT License. See LICENSE file for details. </p>
 
-<p class="definition">Definition in file <a class="el" href="knuth__morris__pratt_8h_source.html">knuth_morris_pratt.h</a>.</p>
+<p class="definition">Definition in file <a class="el" href="rabin__karp_8h_source.html">rabin_karp.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ae7fdb0a5ece1108128ed8985da44810a" name="ae7fdb0a5ece1108128ed8985da44810a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7fdb0a5ece1108128ed8985da44810a">&#9670;&#160;</a></span>kmp()</h2>
+<a id="a5af948f46ee82a9cf76c284afd111fda" name="a5af948f46ee82a9cf76c284afd111fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5af948f46ee82a9cf76c284afd111fda">&#9670;&#160;</a></span>rabin_karp()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool wingmann::algorithms::strings::kmp </td>
+          <td class="memname">std::optional&lt; std::size_t &gt; wingmann::algorithms::strings::rabin_karp </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>text</em>, </td>
@@ -128,18 +129,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>KMP algorithm to find a pattern in a text. </p>
+<p>Perform string pattern search using Rabin-Karp algorithm. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">text</td><td>Text in which to search. </td></tr>
-    <tr><td class="paramname">pattern</td><td>String pattern to search. </td></tr>
+    <tr><td class="paramname">str</td><td>String to search in. </td></tr>
+    <tr><td class="paramname">pat</td><td>Pattern to search for. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Search result.</dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm">https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Index of the found pattern or std::nullopt if not found.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://en.wikipedia.org/wiki/Rabin-Karp_algorithm">https://en.wikipedia.org/wiki/Rabin-Karp_algorithm</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="knuth__morris__pratt_8h_source.html#l00048">48</a> of file <a class="el" href="knuth__morris__pratt_8h_source.html">knuth_morris_pratt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="rabin__karp_8h_source.html#l00085">85</a> of file <a class="el" href="rabin__karp_8h_source.html">rabin_karp.h</a>.</p>
 
 </div>
 </div>

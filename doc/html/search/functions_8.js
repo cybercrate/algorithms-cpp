@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['square_5froot_0',['square_root',['../square__root_8h.html#a369fd0bf4062696114bb08cc7f706a39',1,'wingmann::algorithms::math']]]
+  ['rabin_5fkarp_0',['rabin_karp',['../rabin__karp_8h.html#a5af948f46ee82a9cf76c284afd111fda',1,'wingmann::algorithms::strings']]]
 ];
