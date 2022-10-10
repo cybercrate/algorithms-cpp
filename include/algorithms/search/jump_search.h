@@ -31,8 +31,7 @@ namespace wingmann::algorithms::search {
 template<std::totally_ordered T>
 std::optional<std::size_t> jump_search(const std::vector<T>& data, const T& target)
 {
-    if (data.empty())
-        return std::nullopt;
+    if (data.empty()) return std::nullopt;
 
     std::size_t jump_step = std::floor(std::sqrt(data.size()));
     std::size_t current_index{};

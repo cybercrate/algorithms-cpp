@@ -17,7 +17,9 @@
 
 namespace wingmann::algorithms::strings {
 
-/// @brief Gets failure array.
+namespace {
+
+// Gets failure array.
 auto get_failure = [](const std::string& pattern)
 {
     auto pattern_size = pattern.size();
@@ -32,6 +34,8 @@ auto get_failure = [](const std::string& pattern)
     }
     return failure;
 };
+
+} // namespace
 
 /// @brief  KMP algorithm to find a pattern in a text.
 ///

@@ -16,11 +16,13 @@
 
 namespace wingmann::algorithms::ciphers::xor_cipher {
 
-/// @brief Encrypt given text using Xor cipher.
+/// @brief Encrypt given text using XOR cipher.
 ///
 /// @param text A text to be encrypted.
 /// @param key  To be used for encryption.
 /// @return     Encrypted text.
+///
+/// @see https://en.wikipedia.org/wiki/XOR_cipher
 ///
 std::string encrypt(const std::string& text, const int& key)
 {
@@ -33,11 +35,13 @@ std::string encrypt(const std::string& text, const int& key)
     return encrypted_text.str();
 }
 
-/// @brief Decrypt given text using Xor cipher.
+/// @brief Decrypt given text using XOR cipher.
 ///
 /// @param text A text to be decrypted.
 /// @param key  To be used for decryption.
 /// @return     Decrypted text.
+///
+/// @see https://en.wikipedia.org/wiki/XOR_cipher
 ///
 std::string decrypt(const std::string& text, const int& key)
 {
