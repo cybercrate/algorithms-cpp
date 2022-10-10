@@ -1,27 +1,24 @@
 var indexSectionsWithContent =
 {
-  0: "bcfgjklqst",
-  1: "lq",
-  2: "bcfjklqst",
-  3: "bcfjklst",
-  4: "g"
+  0: "bcfgjklst",
+  1: "bcfjklst",
+  2: "bcfjklst",
+  3: "g"
 };
 
 var indexSectionNames =
 {
   0: "all",
-  1: "classes",
-  2: "files",
-  3: "functions",
-  4: "variables"
+  1: "files",
+  2: "functions",
+  3: "variables"
 };
 
 var indexSectionLabels =
 {
   0: "All",
-  1: "Classes",
-  2: "Files",
-  3: "Functions",
-  4: "Variables"
+  1: "Files",
+  2: "Functions",
+  3: "Variables"
 };
 

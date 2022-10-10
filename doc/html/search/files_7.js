@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['square_5froot_2eh_0',['square_root.h',['../square__root_8h.html',1,'']]]
+  ['ternary_5fsearch_2eh_0',['ternary_search.h',['../ternary__search_8h.html',1,'']]]
 ];
