@@ -1,32 +1,32 @@
 #include "test_helpers/general.h"
 
-#include <algorithms/sorting/bubble_sort.h>
+#include <algorithms/sorting/merge_sort.h>
 
 #include <gtest/gtest.h>
 
 using namespace wingmann::algorithms::sorting;
 using namespace wingmann::utility::test_helpers;
 
-TEST(algorithms_sorting, bubble_sort_empty)
+TEST(algorithms_sorting, merge_sort_empty)
 {
     std::vector<int> data{};
-    EXPECT_FALSE(bubble_sort(data));
+    EXPECT_FALSE(merge_sort(data));
 }
 
-TEST(algorithms_sorting, bubble_sort_one_value)
+TEST(algorithms_sorting, merge_sort_one_value)
 {
     std::vector data{64};
-    EXPECT_FALSE(bubble_sort(data));
+    EXPECT_FALSE(merge_sort(data));
 }
 
-TEST(algorithms_sorting, bubble_sort_two_values)
+TEST(algorithms_sorting, merge_sort_two_values)
 {
     std::vector<int> data;
 
     for (std::size_t test_count = 0; test_count < 10; ++test_count) {
         data = get_vector_with_random_values<int>(2);
 
-        auto sorted = bubble_sort(data);
+        auto sorted = merge_sort(data);
         EXPECT_TRUE(sorted);
 
         for (std::size_t i = 0; i < data.size() - 1; ++i)
@@ -34,14 +34,14 @@ TEST(algorithms_sorting, bubble_sort_two_values)
     }
 }
 
-TEST(algorithms_sorting, bubble_sort_several_values_ascending)
+TEST(algorithms_sorting, merge_sort_several_values_ascending)
 {
     std::vector<int> data;
 
     for (std::size_t test_count = 0; test_count < 10; ++test_count) {
         data = get_vector_with_random_values<int>(1000);
 
-        auto sorted = bubble_sort(data);
+        auto sorted = merge_sort(data);
         EXPECT_TRUE(sorted);
 
         for (std::size_t i = 0; i < data.size() - 1; ++i)
@@ -49,14 +49,14 @@ TEST(algorithms_sorting, bubble_sort_several_values_ascending)
     }
 }
 
-TEST(algorithms_sorting, bubble_sort_several_values_descending)
+TEST(algorithms_sorting, merge_sort_several_values_descending)
 {
     std::vector<int> data;
 
     for (std::size_t test_count = 0; test_count < 10; ++test_count) {
         data = get_vector_with_random_values<int>(1000);
 
-        auto sorted = bubble_sort(data, sorting_type::descending);
+        auto sorted = merge_sort(data, sorting_type::descending);
         EXPECT_TRUE(sorted);
 
         for (std::size_t i = 0; i < data.size() - 1; ++i)

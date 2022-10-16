@@ -20,7 +20,7 @@ template<std::integral T>
 std::vector<T> get_vector_with_random_values(
     std::size_t count = 10'000,
     int min = 0,
-    int max = 1'000)
+    int max = 1000)
 {
     std::vector<T> data(count);
 
@@ -34,7 +34,7 @@ template<std::integral T>
 std::vector<T> get_sorted_vector_with_random_values(
     std::size_t count = 10'000,
     int min = 0,
-    int max = 1'000)
+    int max = 1000)
 {
     auto data = get_vector_with_random_values<T>(count, min, max);
     std::sort(data.begin(), data.end());
