@@ -58,11 +58,11 @@ std::vector<std::uint64_t> z_func_substr(const std::string& text, const std::str
     std::stringstream data;
     data << pattern << '#' << text;
 
-    auto z = generate_z_func(data.str());
+    auto z_values = generate_z_func(data.str());
     std::vector<std::uint64_t> matched_indexes;
 
     for (std::size_t i = 0; i < text_length; ++i)
-        if (z[i + pattern_length + 1] == pattern_length)
+        if (z_values[i + pattern_length + 1] == pattern_length)
             matched_indexes.emplace_back(i);
 
     return matched_indexes;
