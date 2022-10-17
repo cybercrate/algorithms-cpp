@@ -23,6 +23,7 @@ namespace {
 
 // Sorts the vector using a passed comparator.
 template<typename T>
+requires std::totally_ordered<T> && std::swappable<T>
 void bubble_sort(std::vector<T>& data, std::size_t size, bool(* comparator)(const T, const T))
 {
     bool swapped;
@@ -58,7 +59,7 @@ bool bubble_sort(std::vector<T>& data, const sorting_type st = sorting_type::asc
 {
     auto size = data.size();
 
-    if (size <= 1) return false;
+    if (size < 2) return false;
 
     if (st == sorting_type::ascending)
         bubble_sort(data, size, std::cmp_greater);

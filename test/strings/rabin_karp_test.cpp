@@ -7,7 +7,6 @@ using namespace wingmann::algorithms::strings;
 TEST(algorithms_strings, rabin_karp_found)
 {
     auto text{"A string-matching algorithm wants to find the starting index"};
-
     auto result = rabin_karp(text, "ring-match");
 
     EXPECT_TRUE(result.has_value());

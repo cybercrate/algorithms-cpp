@@ -22,7 +22,7 @@ namespace wingmann::algorithms::sorting {
 namespace {
 
 // Sorts the vector using a passed comparator.
-template<typename T>
+template<std::totally_ordered T>
 void merge(
     std::vector<T>& data,
     const std::size_t left_index,
@@ -36,14 +36,14 @@ void merge(
     std::vector<T> left_data(left_size);
     std::vector<T> right_data(right_size);
 
-    for (std::size_t i = 0; i < left_size; i++)
+    for (std::size_t i = 0; i < left_size; ++i)
         left_data[i] = data[left_index + i];
 
-    for (std::size_t i = 0; i < right_size; i++)
+    for (std::size_t i = 0; i < right_size; ++i)
         right_data[i] = data[middle_index + 1 + i];
 
     for (std::size_t i = 0, j = 0, k = left_index; i < left_size || j < right_size; ++k) {
-        if (j >= right_size || (i < left_size && comparator(left_data[i], right_data[j])))
+        if ((j >= right_size) || ((i < left_size) && comparator(left_data[i], right_data[j])))
             data[k] = left_data[i++];
         else
             data[k] = right_data[j++];

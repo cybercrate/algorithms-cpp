@@ -23,7 +23,7 @@ TEST(algorithms_search, jump_search_several_values)
     int target;
     int searched_target;
 
-    for (std::size_t i = 0; i < 10; ++i) {
+    for (std::size_t test_count = 0; test_count < 10; ++test_count) {
         data = get_sorted_vector_with_random_values<int>();
         target = get_value<int>(data);
         searched_target = data[jump_search(data, target).value()];
@@ -35,9 +35,9 @@ TEST(algorithms_search, jump_search_several_values)
 TEST(algorithms_search, jump_search_not_found)
 {
     std::vector<int> data;
-    auto target = 1'001;
+    auto target = 1001;
 
-    for (std::size_t i = 0; i < 10; ++i) {
+    for (std::size_t test_count = 0; test_count < 10; ++test_count) {
         data = get_sorted_vector_with_random_values<int>();
         EXPECT_EQ(std::nullopt, jump_search(data, target));
     }
