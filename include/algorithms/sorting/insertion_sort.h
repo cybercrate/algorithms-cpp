@@ -22,7 +22,10 @@ namespace wingmann::algorithms::sorting {
 namespace {
 
 template<std::totally_ordered T>
-void insertion_sort(std::vector<T>& data, std::size_t size, bool(* comparator)(const T, const T))
+void insertion_sort(
+    std::vector<T>& data,
+    const std::size_t size,
+    bool(* comparator)(const T, const T))
 {
     std::int64_t j;
 
