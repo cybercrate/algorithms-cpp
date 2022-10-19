@@ -9,7 +9,7 @@
 /// See LICENSE file for details.
 ///
 
-#include <concepts>
+#include <wing_concepts/numeric_concepts.h>
 
 #ifndef WINGMANN_ALGORITHMS_MATH_FACTORIAL_H
 #define WINGMANN_ALGORITHMS_MATH_FACTORIAL_H
@@ -24,8 +24,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
-template<typename T>
-requires std::integral<T> && (!std::same_as<T, bool>)
+template<wingmann::concepts::numeric::integral_number T>
 T factorial(T value)
 {
     return (value <= 0) ? 1 : value * factorial(value - 1);
@@ -39,8 +38,7 @@ T factorial(T value)
 ///
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
-template<typename T>
-requires std::integral<T> && (!std::same_as<T, bool>)
+template<wingmann::concepts::numeric::integral_number T>
 T factorial_loop(T value)
 {
     T result{1};

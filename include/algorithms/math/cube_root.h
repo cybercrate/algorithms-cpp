@@ -12,6 +12,8 @@
 #ifndef WINGMANN_ALGORITHMS_MATH_CUBE_ROOT_H
 #define WINGMANN_ALGORITHMS_MATH_CUBE_ROOT_H
 
+#include <wing_concepts/numeric_concepts.h>
+
 #include <cmath>
 #include <concepts>
 
@@ -25,8 +27,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Cube_root
 ///
-template<typename T>
-requires std::floating_point<T> || (std::integral<T> && (!std::same_as<T, bool>))
+template<wingmann::concepts::numeric::pure_number T>
 T cube_root(T value)
 {
     // Set precision.

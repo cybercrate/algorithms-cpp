@@ -9,7 +9,7 @@
 /// See LICENSE file for details.
 ///
 
-#include <concepts>
+#include <wing_concepts/numeric_concepts.h>
 
 #ifndef WINGMANN_ALGORITHMS_MATH_FIBONACCI_H
 #define WINGMANN_ALGORITHMS_MATH_FIBONACCI_H
@@ -24,8 +24,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
-template<typename T>
-requires std::integral<T> && (!std::same_as<T, bool>)
+template<wingmann::concepts::numeric::pure_integral T>
 T fibonacci(T value)
 {
     return (value <= 1) ? value : fibonacci(value - 1) + fibonacci(value - 2);
@@ -39,8 +38,7 @@ T fibonacci(T value)
 ///
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
-template<typename T>
-requires std::integral<T> && (!std::same_as<T, bool>)
+template<concepts::numeric::pure_integral T>
 T fibonacci_loop(T value)
 {
     T first{};

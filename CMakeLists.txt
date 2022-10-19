@@ -16,7 +16,9 @@ else()
     set(CMAKE_CXX_FLAGS "-std=c++20 -Werror -Wall -Wextra -Wpedantic")
 endif()
 
-set(PROJECT_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/include")
+set(PROJECT_INCLUDE_DIRS
+    "${CMAKE_SOURCE_DIR}/include"
+    "${CMAKE_SOURCE_DIR}/lib/wing-concepts/include")
 
 find_package(GTest CONFIG REQUIRED)
 
