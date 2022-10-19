@@ -24,7 +24,7 @@ namespace wingmann::algorithms::sorting {
 namespace {
 
 // Sorts the vector using a passed comparator.
-template<wingmann::concepts::sorting::swappable_totally_ordered T>
+template<concepts::sorting::totally_ordered_swappable T>
 void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator)(const T, const T))
 {
     bool swapped;
@@ -54,7 +54,7 @@ void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator
 ///
 /// @see https://en.wikipedia.org/wiki/Bubble_sort
 ///
-template<wingmann::concepts::sorting::swappable_totally_ordered T>
+template<concepts::sorting::totally_ordered_swappable T>
 bool bubble_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending)
 {
     auto size = data.size();

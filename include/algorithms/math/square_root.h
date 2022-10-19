@@ -26,7 +26,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Square_root
 ///
-template<concepts::numeric::pure_number T>
+template<concepts::numeric::number T>
 T square_root(T value)
 {
     // Set precision.

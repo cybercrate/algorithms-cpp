@@ -24,7 +24,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
-template<wingmann::concepts::numeric::pure_integral T>
+template<concepts::numeric::integral T>
 T fibonacci(T value)
 {
     return (value <= 1) ? value : fibonacci(value - 1) + fibonacci(value - 2);
@@ -38,7 +38,7 @@ T fibonacci(T value)
 ///
 /// @see https://en.wikipedia.org/wiki/Fibonacci_number
 ///
-template<concepts::numeric::pure_integral T>
+template<concepts::numeric::integral T>
 T fibonacci_loop(T value)
 {
     T first{};

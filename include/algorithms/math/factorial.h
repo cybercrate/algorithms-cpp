@@ -24,7 +24,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
-template<wingmann::concepts::numeric::integral_number T>
+template<concepts::numeric::integral T>
 T factorial(T value)
 {
     return (value <= 0) ? 1 : value * factorial(value - 1);
@@ -38,7 +38,7 @@ T factorial(T value)
 ///
 /// @see https://en.wikipedia.org/wiki/Factorial
 ///
-template<wingmann::concepts::numeric::integral_number T>
+template<concepts::numeric::integral T>
 T factorial_loop(T value)
 {
     T result{1};

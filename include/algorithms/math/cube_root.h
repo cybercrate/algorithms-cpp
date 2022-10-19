@@ -27,7 +27,7 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Cube_root
 ///
-template<wingmann::concepts::numeric::pure_number T>
+template<concepts::numeric::number T>
 T cube_root(T value)
 {
     // Set precision.
