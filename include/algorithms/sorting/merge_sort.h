@@ -16,6 +16,7 @@
 
 #include <concepts>
 #include <vector>
+#include <utility>
 
 namespace wingmann::algorithms::sorting {
 
@@ -72,19 +73,22 @@ bool merge_sort(
 {
     auto size = data.size();
 
-    if (size < 2) return false;
-    if (left_index >= right_index) return false;
-
+    if (size < 2) {
+        return false;
+    }
+    if (left_index >= right_index) {
+        return false;
+    }
     auto middle_index = left_index + (right_index - left_index) / 2;
 
     merge_sort(data, left_index, middle_index, st);
     merge_sort(data, middle_index + 1, right_index, st);
 
-    if (st == sorting_type::ascending)
+    if (st == sorting_type::ascending) {
         merge(data, left_index, middle_index, right_index, std::cmp_less_equal);
-    else
+    } else {
         merge(data, left_index, middle_index, right_index, std::cmp_greater_equal);
-
+    }
     return true;
 }
 
@@ -98,8 +102,7 @@ bool merge_sort(
 /// @see https://en.wikipedia.org/wiki/Merge_sort
 ///
 template<std::totally_ordered T>
-bool merge_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending)
-{
+bool merge_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending) {
     return merge_sort(data, 0, data.size() - 1, st);
 }
 

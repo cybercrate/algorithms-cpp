@@ -28,14 +28,15 @@ namespace wingmann::algorithms::search {
 /// @see https://en.wikipedia.org/wiki/Linear_search
 ///
 template<std::totally_ordered T>
-std::optional<std::size_t> linear_search(const std::vector<T>& data, const T& value)
-{
-    if (data.empty())
+std::optional<std::size_t> linear_search(const std::vector<T>& data, const T& value) {
+    if (data.empty()) {
         return std::nullopt;
-
-    for (std::size_t i = 0; i < data.size(); ++i)
-        if (data[i] == value) return i;
-
+    }
+    for (std::size_t i = 0; i < data.size(); ++i) {
+        if (data[i] == value) {
+            return i;
+        }
+    }
     return std::nullopt;
 }
 

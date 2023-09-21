@@ -16,26 +16,23 @@
 
 #include <concepts>
 #include <vector>
+#include <utility>
 
 namespace wingmann::algorithms::sorting {
 
 namespace {
 
 template<std::totally_ordered T>
-void insertion_sort(
-    std::vector<T>& data,
-    const std::size_t size,
-    bool(* comparator)(const T, const T))
-{
+void insertion_sort(std::vector<T>& data, const std::size_t size, bool(* comparator)(const T, const T)) {
     std::int64_t j;
 
     for (std::size_t i = 1; i < size; ++i) {
         T temp = data[i];
         j = static_cast<int64_t>(i - 1);
 
-        for (; j >= 0 && comparator(data[j], temp); --j)
+        for (; j >= 0 && comparator(data[j], temp); --j) {
             data[j + 1] = data[j];
-
+        }
         data[j + 1] = temp;
     }
 }
@@ -52,17 +49,17 @@ void insertion_sort(
 /// @see https://en.wikipedia.org/wiki/Insertion_sort
 ///
 template<std::totally_ordered T>
-bool insertion_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending)
-{
+bool insertion_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending) {
     auto size = data.size();
 
-    if (size < 2) return false;
-
-    if (st == sorting_type::ascending)
+    if (size < 2) {
+        return false;
+    }
+    if (st == sorting_type::ascending) {
         insertion_sort(data, size, std::cmp_greater);
-    else
+    } else {
         insertion_sort(data, size, std::cmp_less);
-
+    }
     return true;
 }
 

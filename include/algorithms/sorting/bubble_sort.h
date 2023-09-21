@@ -14,19 +14,18 @@
 
 #include "sorting_type.h"
 
-#include <wing_concepts/sorting_concepts.h>
-
 #include <concepts>
 #include <vector>
+#include <utility>
 
 namespace wingmann::algorithms::sorting {
 
 namespace {
 
 // Sorts the vector using a passed comparator.
-template<concepts::sorting::totally_ordered_swappable T>
-void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator)(const T, const T))
-{
+template<typename T>
+requires(std::totally_ordered<T> && std::swappable<T>)
+void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator)(const T, const T)) {
     bool swapped;
 
     for (std::size_t i = 0; i < size - 1; ++i) {
@@ -38,8 +37,9 @@ void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator
                 swapped = true;
             }
         }
-
-        if (!swapped) return;
+        if (!swapped) {
+            return;
+        }
     }
 }
 
@@ -54,18 +54,19 @@ void bubble_sort(std::vector<T>& data, const std::size_t size, bool(* comparator
 ///
 /// @see https://en.wikipedia.org/wiki/Bubble_sort
 ///
-template<concepts::sorting::totally_ordered_swappable T>
-bool bubble_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending)
-{
-    auto size = data.size();
+template<typename T>
+requires(std::totally_ordered<T> && std::swappable<T>)
+bool bubble_sort(std::vector<T>& data, const sorting_type st = sorting_type::ascending) {
+    auto size{data.size()};
 
-    if (size < 2) return false;
-
-    if (st == sorting_type::ascending)
+    if (size < 2) {
+        return false;
+    }
+    if (st == sorting_type::ascending) {
         bubble_sort(data, size, std::cmp_greater);
-    else
+    } else {
         bubble_sort(data, size, std::cmp_less);
-
+    }
     return true;
 }
 

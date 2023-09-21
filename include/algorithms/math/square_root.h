@@ -12,8 +12,7 @@
 #ifndef WINGMANN_ALGORITHMS_MATH_SQUARE_ROOT_H
 #define WINGMANN_ALGORITHMS_MATH_SQUARE_ROOT_H
 
-#include <wing_concepts/numeric_concepts.h>
-
+#include <concepts>
 #include <cmath>
 
 namespace wingmann::algorithms::math {
@@ -26,24 +25,23 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Square_root
 ///
-template<concepts::numeric::number T>
-T square_root(T value)
-{
+template<typename T>
+requires(std::floating_point<T> || std::integral<T>)
+T square_root(T value) {
     // Set precision.
     const auto epsilon{0.0000001};
     const auto doubled_value = static_cast<double>(value);
 
     auto low{0.0};
     auto high = static_cast<double>(doubled_value);
-
     auto result = (high + low) / 2.0;
 
     while (std::abs(std::pow(result, 2) - doubled_value) >= epsilon) {
-        if (std::pow(result, 2) < doubled_value)
+        if (std::pow(result, 2) < doubled_value) {
             low = result;
-        else
+        } else {
             high = result;
-
+        }
         result = (high + low) / 2.0;
     }
     return static_cast<T>(result);

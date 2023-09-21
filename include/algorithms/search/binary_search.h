@@ -28,10 +28,10 @@ namespace wingmann::algorithms::search {
 /// @see https://en.wikipedia.org/wiki/Binary_search_algorithm
 ///
 template<std::totally_ordered T>
-std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target)
-{
-    if (data.empty()) return std::nullopt;
-
+std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& target) {
+    if (data.empty()) {
+        return std::nullopt;
+    }
     std::size_t left_index{};
     std::size_t right_index = data.size();
     std::size_t middle_index;
@@ -39,12 +39,13 @@ std::optional<std::size_t> binary_search(const std::vector<T>& data, const T& ta
     while (left_index < right_index) {
         middle_index = left_index + (right_index - left_index) / 2;
 
-        if (auto& current_value = data[middle_index]; target == current_value)
+        if (auto& current_value = data[middle_index]; target == current_value) {
             return middle_index;
-        else if (target < current_value)
+        } else if (target < current_value) {
             right_index = middle_index;
-        else
+        } else {
             left_index = middle_index + 1;
+        }
     }
     return std::nullopt;
 }

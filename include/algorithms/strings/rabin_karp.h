@@ -21,14 +21,13 @@ namespace wingmann::algorithms::strings {
 namespace {
 
 // Converts a string to an integer.
-auto create_hash = [](const std::string& text, int count)
-{
+auto create_hash = [](const std::string& text, int count) {
     const auto prime{5};
     std::int64_t result{};
 
-    for (int i = 0; i < count; ++i)
+    for (int i = 0; i < count; ++i) {
         result += static_cast<std::int64_t>(text[i] * static_cast<std::int64_t>(pow(prime, i)));
-
+    }
     return result;
 };
 
@@ -59,13 +58,13 @@ auto check_for_equal = [](
     std::size_t second_start,
     std::size_t second_end)
 {
-    if ((first_end - first_start) != (second_end - second_start))
+    if ((first_end - first_start) != (second_end - second_start)) {
         return false;
-
+    }
     while ((first_end > first_start) && (second_end > second_start)) {
-        if (first_text[first_start] != second_text[second_start])
+        if (first_text[first_start] != second_text[second_start]) {
             return false;
-
+        }
         ++first_start;
         ++second_start;
     }
@@ -82,19 +81,19 @@ auto check_for_equal = [](
 ///
 /// @see https://en.wikipedia.org/wiki/Rabin-Karp_algorithm
 ///
-std::optional<std::size_t> rabin_karp(const std::string& text, const std::string& pattern)
-{
+std::optional<std::size_t> rabin_karp(const std::string& text, const std::string& pattern) {
     auto pat_hash = create_hash(pattern, pattern.size());
     auto str_hash = create_hash(text, pattern.size());
 
     for (std::size_t i = 0; i <= (text.size() - pattern.size()); ++i) {
         auto equal = check_for_equal(text, pattern, i, i + pattern.size() - 1, 0, pattern.size() - 1);
 
-        if ((pat_hash == str_hash) && equal)
+        if ((pat_hash == str_hash) && equal) {
             return i;
-
-        if (i < text.size() - pattern.size())
+        }
+        if (i < text.size() - pattern.size()) {
             str_hash = recalculate_hash(text, i, i + pattern.size(), str_hash, pattern.size());
+        }
     }
     return std::nullopt;
 }

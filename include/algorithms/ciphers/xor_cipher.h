@@ -24,8 +24,7 @@ namespace wingmann::algorithms::ciphers::xor_cipher {
 ///
 /// @see https://en.wikipedia.org/wiki/XOR_cipher
 ///
-std::string encrypt(const std::string& text, const int& key)
-{
+std::string encrypt(const std::string& text, const int& key) {
     std::stringstream encrypted_text;
 
     for (auto& c: text) {
@@ -43,8 +42,7 @@ std::string encrypt(const std::string& text, const int& key)
 ///
 /// @see https://en.wikipedia.org/wiki/XOR_cipher
 ///
-std::string decrypt(const std::string& text, const int& key)
-{
+std::string decrypt(const std::string& text, const int& key) {
     return encrypt(text, key);
 }
 

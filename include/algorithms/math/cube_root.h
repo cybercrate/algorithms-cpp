@@ -12,8 +12,7 @@
 #ifndef WINGMANN_ALGORITHMS_MATH_CUBE_ROOT_H
 #define WINGMANN_ALGORITHMS_MATH_CUBE_ROOT_H
 
-#include <wing_concepts/numeric_concepts.h>
-
+#include <concepts>
 #include <cmath>
 #include <concepts>
 
@@ -27,9 +26,9 @@ namespace wingmann::algorithms::math {
 ///
 /// @see https://en.wikipedia.org/wiki/Cube_root
 ///
-template<concepts::numeric::number T>
-T cube_root(T value)
-{
+template<typename T>
+requires(std::floating_point<T> || std::integral<T>)
+T cube_root(T value) {
     // Set precision.
     const auto epsilon{0.0000001};
     const auto doubled_value = static_cast<double>(value);
@@ -44,19 +43,19 @@ T cube_root(T value)
         // Absolute value of value - pow(middle, 3)
         double error = [](double value, double middle) {
             auto middle_powered = std::pow(middle, 3);
-            return (value > middle_powered)
-                ? value - middle_powered
-                : middle_powered - value;
+            return (value > middle_powered) ? value - middle_powered : middle_powered - value;
         }(doubled_value, middle);
 
-        if (epsilon > error) return static_cast<T>(middle);
-
-        // If pow(middle, 3) is greater than value set end = middle
-        if (std::pow(middle, 3) > doubled_value)
+        if (epsilon > error) {
+            return static_cast<T>(middle);
+        }
+        if (std::pow(middle, 3) > doubled_value) {
+            // If pow(middle, 3) is greater than value set end = middle
             end = middle;
-        // If pow(middle, 3) is less than value set begin = middle
-        else
+        } else {
+            // If pow(middle, 3) is less than value set begin = middle
             begin = middle;
+        }
     }
 }
 

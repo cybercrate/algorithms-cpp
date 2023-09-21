@@ -20,16 +20,15 @@ namespace wingmann::algorithms::strings {
 namespace {
 
 // Gets failure array.
-auto get_failure = [](const std::string& pattern)
-{
+auto get_failure = [](const std::string& pattern) {
     auto pattern_size = pattern.size();
     auto failure = std::vector<std::size_t>(pattern_size + 1);
     failure[0] = -1;
 
     for (std::size_t i = 0, j = failure[0]; i < pattern_size; i++) {
-        while ((j != std::string::npos) && (pattern[j] != pattern[i]))
+        while ((j != std::string::npos) && (pattern[j] != pattern[i])) {
             j = failure[j];
-
+        }
         failure[i + 1] = ++j;
     }
     return failure;
@@ -45,17 +44,18 @@ auto get_failure = [](const std::string& pattern)
 ///
 /// @see https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
 ///
-bool kmp(const std::string& text, const std::string& pattern)
-{
+bool kmp(const std::string& text, const std::string& pattern) {
     auto text_size = text.size();
     auto pattern_size = pattern.size();
     auto failure = get_failure(pattern);
 
     for (std::size_t i = 0, j = 0; i < text_size; i++) {
-        while ((j != std::string::npos) && (pattern[j] != text[i]))
+        while ((j != std::string::npos) && (pattern[j] != text[i])) {
             j = failure[j];
-
-        if (++j == pattern_size) return true;
+        }
+        if (++j == pattern_size) {
+            return true;
+        }
     }
     return {};
 }
