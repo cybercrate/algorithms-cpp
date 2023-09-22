@@ -1,32 +1,25 @@
 #include "test_helpers/search.h"
 
 #include <algorithms/search/fibonacci_search.h>
-
 #include <gtest/gtest.h>
 
-using namespace wingmann::algorithms::search;
-using namespace wingmann::utility::test_helpers;
-
-TEST(algorithms_search, fibonacci_search_empty)
-{
-    EXPECT_EQ(std::nullopt, fibonacci_search(std::vector<int>{}, 1));
+TEST(algorithms_search, fibonacci_search_empty) {
+    EXPECT_EQ(std::nullopt, wingmann::algorithms::search::fibonacci_search(std::vector<int>{}, 1));
 }
 
-TEST(algorithms_search, fibonacci_search_one_value)
-{
-    EXPECT_EQ(0, fibonacci_search(std::vector<int>{64}, 64).value());
+TEST(algorithms_search, fibonacci_search_one_value) {
+    EXPECT_EQ(0, wingmann::algorithms::search::fibonacci_search(std::vector<int>{64}, 64).value());
 }
 
-TEST(algorithms_search, fibonacci_search_several_values)
-{
+TEST(algorithms_search, fibonacci_search_several_values) {
     std::vector<int> data;
     int target;
     int searched_target;
 
     for (std::size_t test_count = 0; test_count < 10; ++test_count) {
-        data = get_sorted_vector_with_random_values<int>();
-        target = get_value<int>(data);
-        searched_target = data[fibonacci_search(data, target).value()];
+        data = wingmann::utility::test_helpers::get_sorted_vector_with_random_values<int>();
+        target = wingmann::utility::test_helpers::get_value<int>(data);
+        searched_target = data[wingmann::algorithms::search::fibonacci_search(data, target).value()];
 
         EXPECT_EQ(target, searched_target);
     }
